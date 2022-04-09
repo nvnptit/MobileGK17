@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MobileGK17</string>
+    <string name="action_product">Sản phẩm</string>
+    <string name="action_congnhan">Công nhân</string>
+    <string name="action_chamcong">Chấm công</string>
 </resources>

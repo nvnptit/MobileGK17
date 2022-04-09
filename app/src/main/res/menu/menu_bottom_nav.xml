@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_sanpham"
+        android:title="@string/action_product"
+        android:icon="@drawable/ic_product"/>
+
+    <item android:id="@+id/nav_congnhan"
+        android:title="@string/action_congnhan"
+        android:icon="@drawable/ic_congnhan"/>
+
+    <item android:id="@+id/nav_chamcong"
+        android:title="@string/action_chamcong"
+        android:icon="@drawable/ic_chamcong"/>
+</menu>
