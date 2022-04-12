@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
+//#NVN
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     QuanLySanPhamFragment quanLySanPhamFragment;
