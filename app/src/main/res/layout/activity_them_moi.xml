@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".activity.ThemMoiActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_themsanpham"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="#1E88E5"
+        app:title="THÊM MỚI SẢN PHẨM"
+        app:titleTextColor="@color/white">
+    </androidx.appcompat.widget.Toolbar>
+
+<LinearLayout style="@style/style_linear_mcv">
+
+    <LinearLayout style="@style/style_inputfield">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_newmaproduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="Mã sản phẩm"
+                    android:textSize="15dp" />
+
+                <EditText
+                    android:id="@+id/tv_newmaproduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_code"
+                    android:drawablePadding="10dp"
+                    android:inputType="text"
+                    android:textColorHint="@color/black"/>
+            </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/style_inputfield">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_newnameproduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="Tên sản phẩm"
+                    android:textSize="15dp" />
+
+                <EditText
+                    android:id="@+id/tv_newnameproduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_nameproduct"
+                    android:drawablePadding="10dp"
+                    android:inputType="text"
+                    android:textColorHint="@color/black" />
+            </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/style_inputfield">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_newpriceproduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="Đơn giá"
+                    android:textSize="15dp" />
+
+                <EditText
+                    android:id="@+id/tv_newpriceproduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_price"
+                    android:drawablePadding="10dp"
+                    android:inputType="number"
+                    android:textColorHint="@color/black" />
+            </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/style_inputfield">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_newimageproduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="Hình ảnh"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tv_newimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_attach"
+                    android:drawableLeft="@drawable/ic_baseline_attach_file_24"
+                    android:gravity="center"
+                    android:text="Đính kèm"
+                    android:textColor="#2B2C2C" />
+            </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+        <ImageView
+            android:id="@+id/newimage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:src="@drawable/ic_launcher_background"
+            >
+
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btnthem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="THÊM MỚI"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/round_corners"/>
+
+        <Button
+            android:id="@+id/btndatlai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ĐẶT LẠI"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/round_corners" />
+    </LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>

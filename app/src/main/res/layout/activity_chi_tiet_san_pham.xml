@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".activity.ChiTietSanPhamActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_chitietsanpham"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="#1E88E5"
+        app:title="CHI TIẾT SẢN PHẨM"
+        app:titleTextColor="@color/white"></androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout style="@style/style_linear_mcv">
+
+        <LinearLayout style="@style/style_inputfield">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_viewmaproduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:text="Mã sản phẩm"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tv_viewmaproduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_code"
+                        android:text="Mã sản phẩm"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:drawablePadding="10dp"
+                        android:textColorHint="@color/black" />
+                </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_viewnameproduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:text="Tên sản phẩm"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tv_viewnameproduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tên sản phẩm"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/icon_nameproduct"
+                        android:textColorHint="@color/black" />
+                </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/style_inputfield">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_viewpriceproduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:text="Đơn giá"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tv_viewpriceproduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Đơn giá sản phẩm"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:drawableLeft="@drawable/icon_price"
+                        android:drawablePadding="10dp"
+                        android:textColorHint="@color/black" />
+                </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/style_inputfield">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_viewimageproduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hình ảnh"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/ic_baseline_attach_file_24"
+                        android:textSize="15dp" />
+                </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/viewimage"
+                android:layout_marginTop="10dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"
+                android:src="@drawable/ic_launcher_background"
+                >
+            </ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <Button
+                android:id="@+id/btn_capnhat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:layout_weight="1"
+                android:text="Cập nhật"
+                android:textStyle="bold"
+                android:background="@drawable/round_corners"
+                android:padding="20dp" />
+
+            <Button
+                android:id="@+id/btn_xoa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:layout_weight="1"
+                android:text="Xoá"
+                android:textStyle="bold"
+                android:background="@drawable/round_corners"
+                android:padding="20dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

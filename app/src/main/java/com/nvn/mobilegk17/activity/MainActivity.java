@@ -1,4 +1,4 @@
-package com.nvn.mobilegk17;
+package com.nvn.mobilegk17.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +10,13 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.nvn.mobilegk17.Fragment.QuanLySanPhamFragment;
+import com.nvn.mobilegk17.R;
+
 //#NVN
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     QuanLySanPhamFragment quanLySanPhamFragment;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
