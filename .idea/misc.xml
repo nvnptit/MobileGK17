@@ -3,7 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/drawable/arrow_drop_down.xml" value="0.1" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/drawable/border.xml" value="0.166" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/drawable/delete.xml" value="0.166" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/drawable/edit.xml" value="0.166" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/drawable/ic_launcher_background.xml" value="0.166" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/drawable/round_corners.xml" value="0.166" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/drawable/search_24.xml" value="0.166" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/drawable/spinner_arrow.xml" value="0.166" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/drawable/update.xml" value="0.166" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/layout/activity_cham_cong.xml" value="0.264" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/layout/activity_chi_tiet_cham_cong.xml" value="0.264" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/layout/activity_main.xml" value="0.23550724637681159" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/layout/border.xml" value="0.23550724637681159" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/layout/cham_cong_item.xml" value="0.23550724637681159" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/layout/chi_tiet_cham_cong_item.xml" value="0.264" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/layout/spinner_row.xml" value="0.2128623188405797" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/menu/chamcong_menu.xml" value="0.2" />
+        <entry key="..\:/nam4_ky2/diDong/MobileGK17/app/src/main/res/menu/search_menu.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/fragment_quan_ly_san_pham.xml" value="0.165" />
+        <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
