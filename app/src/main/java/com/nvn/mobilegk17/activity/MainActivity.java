@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.nvn.mobilegk17.Fragment.QuanLySanPhamFragment;
+import com.nvn.mobilegk17.fragment.QuanLySanPhamFragment;
 import com.nvn.mobilegk17.R;
 
 //#NVN

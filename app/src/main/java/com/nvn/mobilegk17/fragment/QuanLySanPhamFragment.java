@@ -1,4 +1,4 @@
-package com.nvn.mobilegk17.Fragment;
+package com.nvn.mobilegk17.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -91,6 +91,7 @@ public class QuanLySanPhamFragment extends Fragment {
 //        sanPhamArrayList.add( new SanPham("Q05","Quần Tây","60000","1"));
         dbSanPham = new DbSanPham(getContext());
         sanPhamArrayList.addAll(dbSanPham.laySanPham());
+
         sanPhamAdapter = new SanPhamAdapter(getContext(),sanPhamArrayList);
         recyclerView.setAdapter(sanPhamAdapter);
         recyclerView.setHasFixedSize(true);
@@ -106,6 +107,7 @@ public class QuanLySanPhamFragment extends Fragment {
     private void loadSanPhamDB() {
         sanPhamArrayList.clear();
         sanPhamArrayList.addAll(dbSanPham.laySanPham());
+
         sanPhamAdapter = new SanPhamAdapter(getContext(),sanPhamArrayList);
         recyclerView.swapAdapter(sanPhamAdapter,false);
     }
