@@ -7,21 +7,33 @@ android:layout_height="match_parent"
 tools:context=".fragment.QuanLySanPhamFragment"
 android:orientation="vertical">
 
-<androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar_sanpham"
-    android:layout_marginTop="10dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/round_corners">
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/timkiem"
-        app:queryHint="Nhập từ khoá tìm kiếm"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
-</androidx.appcompat.widget.Toolbar>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_sanpham"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_corners">
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/timkiem"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:queryHint="Nhập từ khoá tìm kiếm" />
+        </androidx.appcompat.widget.Toolbar>
+        <Button
+            android:id="@+id/btn_Chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|right"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:background="@drawable/ic_baseline_insert_chart_24"
+            />
+    </LinearLayout>
 
 <LinearLayout
     android:layout_width="match_parent"

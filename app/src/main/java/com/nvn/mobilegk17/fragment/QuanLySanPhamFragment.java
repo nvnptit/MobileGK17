@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.nvn.mobilegk17.R;
+import com.nvn.mobilegk17.activity.ChartActivity;
 import com.nvn.mobilegk17.activity.ThemMoiActivity;
 import com.nvn.mobilegk17.adapter.SanPhamAdapter;
 import com.nvn.mobilegk17.database.DbSanPham;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 public class QuanLySanPhamFragment extends Fragment {
     private View view;
     Toolbar toolbar;
-    Button btnThemMoi;
+    Button btnThemMoi,btn_Chart;
     RecyclerView recyclerView;
     SearchView timKiem;
 
@@ -78,6 +79,13 @@ public class QuanLySanPhamFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ThemMoiActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_Chart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ChartActivity.class);
                 startActivity(intent);
             }
         });
@@ -135,5 +143,6 @@ public class QuanLySanPhamFragment extends Fragment {
         btnThemMoi = getActivity().findViewById(R.id.btn_them);
         recyclerView = getActivity().findViewById(R.id.recyclerview);
         timKiem = getActivity().findViewById(R.id.timkiem);
+        btn_Chart = getActivity().findViewById(R.id.btn_Chart);
     }
 }
