@@ -22,7 +22,7 @@ public class DbSanPham extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "CREATE TABLE tbSanPham (MASP text PRIMARY KEY, TENSP text, DONGIA text, HINHSP text)";
+        String sql = "CREATE TABLE tbSanPham (MASP text , TENSP text, DONGIA text, HINHSP text)";
         sqLiteDatabase.execSQL(sql);
     }
 

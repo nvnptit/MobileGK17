@@ -82,14 +82,33 @@ public class QuanLySanPhamFragment extends Fragment {
             }
         });
     }
+    void initDataDB(){
+//        dbSanPham.themSanPham(new SanPham("A01","Áo sơ mi nữ",
+//                "100000","/storage/emulated/0/Download/aosominu.png"));
+//        dbSanPham.themSanPham(new SanPham("A02","Áo sơ mi nam 1",
+//                "80000","/storage/emulated/0/Download/aosominam.png"));
+//        dbSanPham.themSanPham(new SanPham("A03","Áo sơ mi nam 2",
+//                "180000","/storage/emulated/0/Download/aosominam1.png"));
+//        dbSanPham.themSanPham(new SanPham("B01","Bao tay",
+//                "6000","/storage/emulated/0/Download/baotay.png"));
+//        dbSanPham.themSanPham(new SanPham("D01","Dép 1",
+//                "15000","/storage/emulated/0/Download/dep1.png"));
+//        dbSanPham.themSanPham(new SanPham("D02","Dép 2",
+//                "15000","/storage/emulated/0/Download/dep2.png"));
+//        dbSanPham.themSanPham(new SanPham("N01","Nón 1",
+//                "20000","/storage/emulated/0/Download/non1.png"));
+//        dbSanPham.themSanPham(new SanPham("N02","Nón 2",
+//                "30000","/storage/emulated/0/Download/non2.png"));
+//        dbSanPham.themSanPham(new SanPham("N03","Nón 3",
+//                "40000","/storage/emulated/0/Download/non3.png"));
+//        dbSanPham.themSanPham(new SanPham("Q01","Quần tây nam",
+//                "88888","/storage/emulated/0/Download/quantaynam.png"));
+//        dbSanPham.themSanPham(new SanPham("Q02","Quần tây nữ",
+//                "99999","/storage/emulated/0/Download/quantaynu.png"));
+    }
     private void initData() {
-//        sanPhamArrayList.add( new SanPham("A01","Áo sơ mi nữ","30000","content://com.android.providers.media.documents/document/image%3A18"));
-//        sanPhamArrayList.add( new SanPham("A02","Áo sơ mi nam","45000","1"));
-//        sanPhamArrayList.add( new SanPham("B03","Bao tay","6000","1"));
-//        sanPhamArrayList.add( new SanPham("D06","Dép","15000","1"));
-//        sanPhamArrayList.add( new SanPham("N04","Nón","8000","1"));
-//        sanPhamArrayList.add( new SanPham("Q05","Quần Tây","60000","1"));
         dbSanPham = new DbSanPham(getContext());
+//        initDataDB();
         sanPhamArrayList.addAll(dbSanPham.laySanPham());
 
         sanPhamAdapter = new SanPhamAdapter(getContext(),sanPhamArrayList);

@@ -18,6 +18,7 @@ import com.nvn.mobilegk17.model.SanPham;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -71,7 +72,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHold
         }
         DecimalFormat df = new DecimalFormat("###,###,###");
         holder.nameProduct.setText(sanPham.getTenSP());
-        holder.priceProduct.setText(df.format(Integer.parseInt(sanPham.getDonGia())) + "VNĐ");
+        holder.priceProduct.setText(df.format(Integer.parseInt(sanPham.getDonGia())) + " VNĐ");
         Picasso.get().load(Uri.fromFile(new File(sanPham.getHinhSP())))
                 .error(R.drawable.no_image)
                 .into(holder.imageProduct);

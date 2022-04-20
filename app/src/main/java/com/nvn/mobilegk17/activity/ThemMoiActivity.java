@@ -199,7 +199,7 @@ public class ThemMoiActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String regexTenSP="\\w+";
+                String regexTenSP="^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\W\\d\\s]+$";
                 if (!charSequence.toString().isEmpty() && !charSequence.toString().matches(regexTenSP)) {
                     textInputLayoutTenSP.setError("Chỉ dùng các chữ cái và số");
                 } else {
