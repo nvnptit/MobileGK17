@@ -164,6 +164,15 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
             }
 
         });
+        btnChamCong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ChamCongActivity.class);
+                intent.putExtra("macn",tvMaCN.getText().toString());
+                startActivity(intent);
+            }
+        });
+
     }
 
 

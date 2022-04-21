@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.nvn.mobilegk17.fragment.BieuDoFragment;
 import com.nvn.mobilegk17.fragment.CongNhanFragment;
 import com.nvn.mobilegk17.fragment.QuanLySanPhamFragment;
 import com.nvn.mobilegk17.R;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     QuanLySanPhamFragment quanLySanPhamFragment;
     CongNhanFragment congNhanFragment;
+    BieuDoFragment bieuDoFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         quanLySanPhamFragment = new QuanLySanPhamFragment();
         congNhanFragment = new CongNhanFragment();
+        bieuDoFragment = new BieuDoFragment();
     }
 
     private void setEvent() {
@@ -44,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 } else if (id == R.id.nav_congnhan) {
                     setFragment(congNhanFragment);
                     return true;
-                } else if (id == R.id.nav_chamcong) {
-                 //   setFragment(ChamCongFragment);
+                } else if (id == R.id.nav_bieudo) {
+                    setFragment(bieuDoFragment);
                     return true;
                 }
                 return false;

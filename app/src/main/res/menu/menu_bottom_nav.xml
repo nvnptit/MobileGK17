@@ -8,7 +8,7 @@
         android:title="@string/action_congnhan"
         android:icon="@drawable/ic_congnhan"/>
 
-    <item android:id="@+id/nav_chamcong"
-        android:title="@string/action_chamcong"
-        android:icon="@drawable/ic_chamcong"/>
+    <item android:id="@+id/nav_bieudo"
+        android:title="@string/action_bieudo"
+        android:icon="@drawable/ic_baseline_insert_chart_24"/>
 </menu>

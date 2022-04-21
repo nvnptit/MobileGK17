@@ -15,6 +15,7 @@
         android:src="@drawable/hinh1" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+
         android:id="@+id/btnEditImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -147,6 +148,7 @@
         android:paddingVertical="10dp">
 
         <LinearLayout
+            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -159,9 +161,9 @@
                 android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:hint="select item">
 
                 <AutoCompleteTextView

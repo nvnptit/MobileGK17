@@ -2,11 +2,29 @@
     <string name="app_name">MobileGK17</string>
     <string name="action_product">Sản phẩm</string>
     <string name="action_congnhan">Công nhân</string>
-    <string name="action_chamcong">Chấm công</string>
+    <string name="action_bieudo">Biểu đồ</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="addnew">Thêm mới</string>
     <string name="bieudo">Biểu đồ</string>
     <string name="timkiem">Tìm kiếm</string>
+
+    <string name="cc">CHẤM CÔNG</string>
+    <string name="ThemChamCong">Thêm chấm công</string>
+    <string name="Them">Thêm</string>
+    <string name="Sua">Sửa</string>
+    <string name="Xoá">Xoá</string>
+    <string name="MaCongNhan">Mã công nhân: </string>
+    <string name="MaChamCong">Mã chấm công: </string>
+    <string name="NgayChamCong">Ngày chấm công: </string>
+    <string name="textViewDS">DANH SÁCH CHẤM CÔNG</string>
+
+    <string name="CTCC">CHI TIẾT CHẤM CÔNG</string>
+    <string name="textViewCTCC">DANH SÁCH CHI TIẾT</string>
+    <string name="MaSP">Mã sản phẩm: </string>
+    <string name="TenSP">Tên sản phẩm: </string>
+    <string name="SoThanhPham">Số thành phẩm: </string>
+    <string name="SoPhePham">Số phế phẩm: </string>
+    <string name="search">Search: </string>
 
 </resources>
