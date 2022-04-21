@@ -10,13 +10,18 @@
         <entry key="app/src/main/res/drawable/round_corners.xml" value="0.163" />
         <entry key="app/src/main/res/layout/activity_cap_nhat.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_chart.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/activity_chi_tiet_cong_nhan.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_chi_tiet_san_pham.xml" value="0.11822916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_qlsanpham.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/activity_them_cnactivity.xml" value="0.15416666666666667" />
         <entry key="app/src/main/res/layout/activity_them_moi.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_tim_kiem.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/fragment_cong_nhan.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/fragment_quan_ly_san_pham.xml" value="0.165" />
         <entry key="app/src/main/res/layout/line_qlsanpham.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/menu/main_menu_cn.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.25416666666666665" />
       </map>
     </option>

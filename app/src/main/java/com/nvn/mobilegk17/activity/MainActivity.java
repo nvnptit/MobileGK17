@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.nvn.mobilegk17.fragment.CongNhanFragment;
 import com.nvn.mobilegk17.fragment.QuanLySanPhamFragment;
 import com.nvn.mobilegk17.R;
 
@@ -17,7 +18,7 @@ import com.nvn.mobilegk17.R;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     QuanLySanPhamFragment quanLySanPhamFragment;
-
+    CongNhanFragment congNhanFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private void setControl() {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         quanLySanPhamFragment = new QuanLySanPhamFragment();
+        congNhanFragment = new CongNhanFragment();
     }
 
     private void setEvent() {
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     setFragment(quanLySanPhamFragment);
                     return true;
                 } else if (id == R.id.nav_congnhan) {
-                 //   setFragment(CongNhanFragment);
+                    setFragment(congNhanFragment);
                     return true;
                 } else if (id == R.id.nav_chamcong) {
                  //   setFragment(ChamCongFragment);
@@ -58,4 +60,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
