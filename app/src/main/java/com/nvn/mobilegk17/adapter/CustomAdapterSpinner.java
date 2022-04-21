@@ -45,7 +45,6 @@ public class CustomAdapterSpinner extends BaseAdapter {
         return 0;
     }
 
-
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         SanPham sp = (SanPham) getItem(i);
