@@ -1,22 +1,39 @@
 package com.nvn.mobilegk17;
 
-public class CongNhan {
+import android.net.Uri;
+
+import java.io.Serializable;
+
+public class CongNhan implements Serializable {
     String maCN;
     String hoCN;
     String tenCN;
     String phanXuong;
-    String HinhAnh;
+    String ngaySinh;
+    String ImageSrc;
 
-    public CongNhan() {
 
-    }
 
-    public CongNhan(String maCN, String hoCN, String tenCN, String phanXuong, String hinhAnh) {
+    public CongNhan(String maCN, String hoCN, String tenCN, String phanXuong,  String ngaySinh,String ImageSrc) {
         this.maCN = maCN;
         this.hoCN = hoCN;
         this.tenCN = tenCN;
         this.phanXuong = phanXuong;
-        this.HinhAnh = hinhAnh;
+
+        this.ngaySinh = ngaySinh;
+        this.ImageSrc=ImageSrc;
+    }
+
+    public CongNhan(String cNnew) {
+
+    }
+
+    public String getImageSrc() {
+        return ImageSrc;
+    }
+
+    public void setImageSrc(String imageSrc) {
+        ImageSrc = imageSrc;
     }
 
     public String getMaCN() {
@@ -51,11 +68,12 @@ public class CongNhan {
         this.phanXuong = phanXuong;
     }
 
-    public String getHinhAnh() {
-        return HinhAnh;
+
+    public String getNgaySinh() {
+        return ngaySinh;
     }
 
-    public void setHinhAnh(String hinhAnh) {
-        this.HinhAnh = hinhAnh;
+    public void setNgaySinh(String ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 }
