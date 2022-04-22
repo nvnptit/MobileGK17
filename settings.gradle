@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MobileGK17"
 include ':app'
+include ':app:lib'
