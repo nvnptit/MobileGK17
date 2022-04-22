@@ -133,8 +133,8 @@ public class DBLogin extends SQLiteOpenHelper {
         {
             cursor.moveToFirst();
         }
-        else
-            return null;
+        else return null;
+
         u.setEmail(cursor.getString(0));
         u.setPassword(cursor.getString(1));
         u.setName(cursor.getString(3));
@@ -159,15 +159,16 @@ public class DBLogin extends SQLiteOpenHelper {
 
     }
     @SuppressLint("Range")
-    public int checkVerify(String username) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query("Users",
-                new String[]{"isVerify"}, "username" + "=?",
-                new String[]{username}, null, null, null, null);
-        if (cursor != null)
+    public int checkVerify(String user) {
+        SQLiteDatabase db=this.getWritableDatabase();
+        String sql = "SELECT isVerify FROM users where username=?";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql,new String[]{user});
+        if (cursor.getCount()>0)
+        {
             cursor.moveToFirst();
-        int verify = cursor.getInt(cursor.getInt(0));
-        cursor.close();
-        return verify;
+        }
+        else return 0;
+        return cursor.getInt(0);
     }
 }

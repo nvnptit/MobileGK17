@@ -30,23 +30,26 @@ public class ResetPasswordActivity extends AppCompatActivity {
     EditText email_phone;
     private FirebaseAuth mAuth;
     DBLogin db;
-    private static final String TAG=VerifyEmailActivity.class.getName();
+    private static final String TAG = VerifyEmailActivity.class.getName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
-        button=findViewById(R.id.cirContButton);
-        email_phone=findViewById(R.id.editTextEmailPhone);
-        mAuth=FirebaseAuth.getInstance();
-        db=new DBLogin(this);
+        button = findViewById(R.id.cirContButton);
+        email_phone = findViewById(R.id.editTextEmailPhone);
+        mAuth = FirebaseAuth.getInstance();
+
+        db = new DBLogin(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phone=email_phone.getText().toString();
+                String phone = email_phone.getText().toString();
                 onClickVerify(phone);
             }
         });
     }
+
     private void onClickVerify(String phone) {
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(mAuth)
@@ -57,18 +60,17 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                                 signInWithPhoneAuthCredential(phoneAuthCredential);
-
                             }
 
                             @Override
                             public void onVerificationFailed(@NonNull FirebaseException e) {
-                                Toast.makeText(ResetPasswordActivity.this,"Verify Failed",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ResetPasswordActivity.this, "Verify Failed", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onCodeSent(@NonNull String verifycationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 super.onCodeSent(verifycationId, forceResendingToken);
-                                goToVerifyResetPasswordActivity(phone,verifycationId);
+                                goToVerifyResetPasswordActivity(phone, verifycationId);
                             }
                         })          // OnVerificationStateChangedCallbacks
                         .build();
@@ -93,7 +95,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 // The verification code entered was invalid
-                                Toast.makeText(ResetPasswordActivity.this,"The verification code entered was invalid",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ResetPasswordActivity.this, "The verification code entered was invalid", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -101,19 +103,21 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
                 });
     }
+
     private void gotoMainActivity(String phoneNumber) {
-        Intent intent=new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     private void goToVerifyResetPasswordActivity(String phone, String verifycationId) {
-        Intent intent= new Intent(this, VerifyResetPasswordActivity.class);
-        intent.putExtra("phone_number",phone);
-        intent.putExtra("verifycationId",verifycationId);
+        Intent intent = new Intent(this, VerifyResetPasswordActivity.class);
+        intent.putExtra("phone_number", phone);
+        intent.putExtra("verifycationId", verifycationId);
         startActivity(intent);
     }
-    public void backLogin(View view){
-        Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+
+    public void backLogin(View view) {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
     }
 }
