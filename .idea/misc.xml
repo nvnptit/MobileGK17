@@ -42,6 +42,8 @@
         <entry key="app/src/main/res/layout/fragment_cham_cong.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/fragment_cong_nhan.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/fragment_quan_ly_san_pham.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_cn.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/line_bieudo.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/line_qlsanpham.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/spinner_row.xml" value="0.11822916666666666" />
         <entry key="app/src/main/res/menu/main_menu_cn.xml" value="0.25416666666666665" />

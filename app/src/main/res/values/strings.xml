@@ -26,5 +26,6 @@
     <string name="SoThanhPham">Số thành phẩm: </string>
     <string name="SoPhePham">Số phế phẩm: </string>
     <string name="search">Search: </string>
+    <string name="dsBieuDo">Danh sách biểu đồ</string>
 
 </resources>
