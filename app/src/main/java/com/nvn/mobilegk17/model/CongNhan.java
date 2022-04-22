@@ -22,7 +22,7 @@ public class CongNhan implements Serializable {
         this.ImageSrc=ImageSrc;
     }
 
-    public CongNhan(String cNnew) {
+    public CongNhan() {
 
     }
 

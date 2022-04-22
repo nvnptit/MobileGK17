@@ -12,11 +12,11 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#009688"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
             android:text="@string/CTCC"
             android:textAlignment="center"
             android:textAppearance="@style/Title" />
@@ -40,13 +40,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp">
 
@@ -55,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/MaChamCong"
-                android:textAppearance="@style/nomal" />
+                android:textAppearance="@style/nomal"/>
 
             <TextView
                 android:id="@+id/tvMCC"
@@ -63,7 +64,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAlignment="center"
-                android:textAppearance="@style/nomal" />
+                android:textAppearance="@style/nomal"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -84,20 +86,20 @@
                     android:textAppearance="@style/nomal" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:background="@drawable/spinner_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <Spinner
 
                         android:id="@+id/spnSP"
+                        android:paddingRight="5sp"
                         android:layout_width="230dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:paddingRight="5sp"
                         android:spinnerMode="dropdown">
 
                     </Spinner>
@@ -126,10 +128,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:textAlignment="center"
-                android:textAppearance="@style/nomal" />
+                android:textAppearance="@style/nomal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -162,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/SoPhePham"
-                android:textAppearance="@style/nomal" />
+                android:textAppearance="@style/nomal"/>
 
             <EditText
                 android:id="@+id/edtSoPhePham"
@@ -179,26 +181,38 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnThemCTCC"
-                android:layout_width="0dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_corners"
                 android:text="@string/Them"
-                android:textAppearance="@style/button" />
+                android:textAppearance="@style/button"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSuaCTCC"
-                android:layout_width="0dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_corners"
                 android:text="@string/Sua"
-                android:textAppearance="@style/button" />
+                android:textAppearance="@style/button"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPdf"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_corners"
+                android:text="Pdf"
+                android:textAppearance="@style/button"/>
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -207,14 +221,15 @@
             android:orientation="vertical">
 
             <TextView
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#009688"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
                 android:text="@string/textViewCTCC"
                 android:textAlignment="center"
-                android:textAppearance="@style/Title" />
+                android:textAppearance="@style/Title"
+                />
 
             <ListView
                 android:id="@+id/lvCTCC"

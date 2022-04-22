@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nvn.mobilegk17.R;
+import com.nvn.mobilegk17.fragment.CongNhanFragment;
 import com.nvn.mobilegk17.model.CongNhan;
 
 import java.text.SimpleDateFormat;
@@ -67,6 +68,7 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
         txtHo.setText(congNhan.getHoCN());
         txtTen.setText(congNhan.getTenCN());
         ImageOld=congNhan.getImageSrc();
+        System.out.println("HINH_Nhat:"+ ImageOld);
         Glide.with(getApplicationContext())
                 .load(congNhan.getImageSrc())
                 .into(hinhAnh);
@@ -127,7 +129,7 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                                    Intent intent=new Intent(getApplicationContext(), MainActivity.class);
                                     Bundle bundle=new Bundle();
                                     bundle.putSerializable("user_update",congNhanUpdate);
                                     intent.putExtras(bundle);
@@ -187,8 +189,7 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
 
         switch (requestCode) {
             case PERMISSION_CODE: {
-                if (grantResults.length > 0 && grantResults[0] ==
-                        PackageManager.PERMISSION_GRANTED
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
                 ) {
                     pickImageFromGallery();
                 } else {

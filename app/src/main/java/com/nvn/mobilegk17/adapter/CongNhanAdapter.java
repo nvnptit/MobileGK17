@@ -2,6 +2,7 @@ package com.nvn.mobilegk17.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,9 @@ import com.nvn.mobilegk17.R;
 import com.nvn.mobilegk17.activity.ChiTietCongNhanActivity;
 import com.nvn.mobilegk17.model.CongNhan;
 import com.nvn.mobilegk17.model.SanPham;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -56,9 +59,13 @@ public class CongNhanAdapter extends  RecyclerView.Adapter<CongNhanAdapter.UserV
         {
             return;
         }
+        System.out.println("HINH_Nhat:"+ holder.imgUser);
         Glide.with(mContext)
                 .load(congNhan.getImageSrc())
                 .into(holder.imgUser);
+//        Picasso.get().load(Uri.fromFile(new File(congNhan.getImageSrc())))
+//                .error(R.drawable.no_image)
+//                .into(holder.imgUser);
         holder.tvName.setText(congNhan.getHoCN()+" "+congNhan.getTenCN());
         holder.tvPhanXuong.setText(congNhan.getPhanXuong());
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {

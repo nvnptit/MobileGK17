@@ -49,7 +49,6 @@ public class ChartActivity extends AppCompatActivity {
     private void setEvent() {
         //Initialize array list
         dbSanPham = new DbSanPham(getApplicationContext());
-//        initDataDB();
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         //Use for loop
