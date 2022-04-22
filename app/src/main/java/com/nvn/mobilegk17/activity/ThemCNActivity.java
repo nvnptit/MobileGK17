@@ -49,6 +49,13 @@ public class ThemCNActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_cnactivity);
         setControl();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle == null) {
+            return;
+        }
+        String MaCNMoi=bundle.getString("Mamoi");
+        tvMaCN.setText(MaCNMoi);
+        CongNhan congNhan = (CongNhan) bundle.get("user_update");
         adapterPhanXuong = new ArrayAdapter<String>(this, R.layout.dropdown_item, items);
         cbbPhanXuong.setAdapter(adapterPhanXuong);
         setEvent();
@@ -60,7 +67,7 @@ public class ThemCNActivity extends AppCompatActivity {
                 Ho = txtHo.getText().toString();
                 Ten = txtTen.getText().toString();
                 PhanXuong = cbbPhanXuong.getText().toString();
-                MaCN = "CN10";
+                MaCN = tvMaCN.getText().toString();
 
                 NgaySinh = edtDate.getText().toString();
                 if (Ho.isEmpty() || Ten.isEmpty() || PhanXuong.isEmpty() || NgaySinh.isEmpty()) {
@@ -101,6 +108,8 @@ public class ThemCNActivity extends AppCompatActivity {
 
         });
     }
+
+
 
 
     private void pickImageFromGallery() {
@@ -185,5 +194,6 @@ public class ThemCNActivity extends AppCompatActivity {
         edtDate = findViewById(R.id.edtNgaySinhCR);
         imageCreate = findViewById(R.id.profile_imageCR);
         btnSelectPhoto = findViewById(R.id.btnChoosedImage);
+        tvMaCN=findViewById(R.id.tvmaCNCR);
     }
 }
