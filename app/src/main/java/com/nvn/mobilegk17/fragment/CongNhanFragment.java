@@ -82,14 +82,16 @@ public class CongNhanFragment extends Fragment {
     }
 
     private String  taoMaCN(){
-       CongNhan congNhan= mListCongNhan.get(mListCongNhan.size()-1);
-       String maCNHienTai=congNhan.getMaCN();
-
-        System.out.println(maCNHienTai);
-        String[] part = maCNHienTai.split("(?<=\\D)(?=\\d)");
-        int maMoi=Integer.valueOf(part[1])+1;
-        String maCNmoi="CN"+ maMoi;
-       return maCNmoi ;
+        if (mListCongNhan.size()>0){
+            CongNhan congNhan= mListCongNhan.get(mListCongNhan.size()-1);
+            String maCNHienTai=congNhan.getMaCN();
+            System.out.println(maCNHienTai);
+            String[] part = maCNHienTai.split("(?<=\\D)(?=\\d)");
+            int maMoi=Integer.valueOf(part[1])+1;
+            String maCNmoi="CN"+ maMoi;
+            return maCNmoi ;
+        }
+       return "CN1";
     }
     private void setEvent() {
         initData();

@@ -68,6 +68,7 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
         txtHo.setText(congNhan.getHoCN());
         txtTen.setText(congNhan.getTenCN());
         ImageOld=congNhan.getImageSrc();
+        System.out.println("HINH_Nhat:"+ ImageOld);
         Glide.with(getApplicationContext())
                 .load(congNhan.getImageSrc())
                 .into(hinhAnh);
@@ -188,8 +189,7 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
 
         switch (requestCode) {
             case PERMISSION_CODE: {
-                if (grantResults.length > 0 && grantResults[0] ==
-                        PackageManager.PERMISSION_GRANTED
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
                 ) {
                     pickImageFromGallery();
                 } else {
