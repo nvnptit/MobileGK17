@@ -14,7 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.nvn.mobilegk17.R;
+import com.nvn.mobilegk17.activity.ChamCongActivity;
 import com.nvn.mobilegk17.model.ChamCong;
+import com.nvn.mobilegk17.model.CongNhan;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,20 +26,25 @@ public class CustomAdapterChamCong extends ArrayAdapter<ChamCong> implements Fil
     private final Context context;
     private final int resource;
     private List<ChamCong> data;
-    private List<ChamCong> dataOld;
+    private List<ChamCong> dataOld= new ArrayList<>();
 
-    public CustomAdapterChamCong(@NonNull Context context, int resource, List<ChamCong> data) {
-        super(context, resource, data);
+    public CustomAdapterChamCong(@NonNull Context context, int resource, List<ChamCong> data1) {
+        super(context, resource, data1);
         this.context = context;
         this.resource = resource;
-        this.data = data;
-        this.dataOld = data;
+        this.data = data1;
+        this.dataOld.addAll(data) ;
     }
 
     @Override
     public int getCount() {
-        return data.size();
+        if(data!=null)
+        {
+            return  data.size();
+        }
+        return 0;
     }
+
 
     @NonNull
     @Override
@@ -53,41 +60,27 @@ public class CustomAdapterChamCong extends ArrayAdapter<ChamCong> implements Fil
         tvMaChamCong.setText(chamCong.getMaChamCong());
         tvNgayChamCong.setText(chamCong.getNgayChamCong());
 
-//        imXoaChamCong.setOnClickListener(view -> {
-//            ((getContext(ChamCongFragment)) context).xoaChamCong(chamCong);
-//        });
+        imXoaChamCong.setOnClickListener(view -> {
+            ((ChamCongActivity) context).xoaChamCong(chamCong);
+        });
 
         return convertView;
     }
 
-    @NonNull
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence charSequence) {
-                String strSearch = charSequence.toString();
-                if(strSearch.isEmpty()){
-                    data= dataOld;
-                }else{
-                    List<ChamCong> chamCongs= new ArrayList<>();
-                    for(ChamCong cc: dataOld){
-                        if(cc.getMaChamCong().toLowerCase().contains(strSearch.toLowerCase()) || cc.getNgayChamCong().toLowerCase().contains(strSearch.toLowerCase()) ){
-                            chamCongs.add(cc);
-                        }
-                    }
-                    data= chamCongs;
+    public  void filter(String text) {
+        data.clear();
+        text = text.toLowerCase();
+        if (text.length() == 0) {
+            data.addAll(dataOld);
+        } else {
+            for (ChamCong cc : dataOld) {
+                String thongtin = cc.getMaChamCong()+" "+cc.getNgayChamCong();
+                if (thongtin.toLowerCase().contains(text)) {
+                    data.add(cc);
                 }
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = data;
-                return filterResults;
             }
-
-            @Override
-            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                data= (List<ChamCong>) filterResults.values;
-                notifyDataSetChanged();
-            }
-        };
+        }
+        notifyDataSetChanged();
     }
+
 }

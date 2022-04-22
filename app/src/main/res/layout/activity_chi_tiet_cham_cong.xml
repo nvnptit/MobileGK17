@@ -23,7 +23,20 @@
 
 
     </LinearLayout>
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_congnhan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_corners">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/timkiem_congnhan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:queryHint="Nhập từ khoá tìm kiếm" />
+    </androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

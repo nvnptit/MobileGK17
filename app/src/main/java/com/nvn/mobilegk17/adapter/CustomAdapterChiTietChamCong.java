@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.nvn.mobilegk17.R;
 import com.nvn.mobilegk17.activity.ChiTietChamCongActivity;
+import com.nvn.mobilegk17.model.ChamCong;
 import com.nvn.mobilegk17.model.ChiTietChamCong;
 
 import java.util.ArrayList;
@@ -25,14 +26,14 @@ public class CustomAdapterChiTietChamCong extends ArrayAdapter<ChiTietChamCong> 
     private final Context context;
     private final int resource;
     private List<ChiTietChamCong> data;
-    private List<ChiTietChamCong> dataOld;
+    private List<ChiTietChamCong> dataOld= new ArrayList<>();
 
     public CustomAdapterChiTietChamCong(@NonNull Context context, int resource, List<ChiTietChamCong> data) {
         super(context, resource, data);
         this.context = context;
         this.resource = resource;
         this.data = data;
-        this.dataOld= data;
+        this.dataOld.addAll(data);
     }
 
     @Override
@@ -65,34 +66,22 @@ public class CustomAdapterChiTietChamCong extends ArrayAdapter<ChiTietChamCong> 
         return convertView;
     }
 
-    @NonNull
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence charSequence) {
-                String strSearch = charSequence.toString();
-                if(strSearch.isEmpty()){
-                    data= dataOld;
-                }else{
-                    List<ChiTietChamCong> chiTietChamCongs= new ArrayList<>();
-                    for(ChiTietChamCong cc: dataOld){
-                        if(cc.getTenSanPham().toLowerCase().contains(strSearch.toLowerCase())|| cc.getMaSanPham().toLowerCase().contains(strSearch.toLowerCase())){
-                            chiTietChamCongs.add(cc);
-                        }
-                    }
-                    data= chiTietChamCongs;
+    public  void filter(String text) {
+        data.clear();
+        text = text.toLowerCase();
+        if (text.length() == 0) {
+            data.addAll(dataOld);
+        } else {
+            for (ChiTietChamCong cc : dataOld) {
+                String thongtin = cc.getMaSanPham()+" "+ cc.getTenSanPham();
+                if (thongtin.toLowerCase().contains(text)) {
+                    data.add(cc);
                 }
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = data;
-                return filterResults;
             }
-
-            @Override
-            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                data= (List<ChiTietChamCong>) filterResults.values;
-                notifyDataSetChanged();
-            }
-        };
+        }
+        notifyDataSetChanged();
     }
+
+
+
 }

@@ -22,6 +22,20 @@
             android:textAppearance="@style/Title" />
 
     </LinearLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_congnhan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_corners">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/timkiem_congnhan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:queryHint="Nhập từ khoá tìm kiếm" />
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,16 +90,24 @@
             android:paddingRight="5dp"
             android:text="@string/NgayChamCong"
             android:textAppearance="@style/nomal" />
-
         <EditText
-
-            android:id="@+id/edtNgayChamCong"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/addNgaySinhBTV"
+            android:layout_width="220dp"
+            android:layout_height="45dp"
+            android:background="@drawable/img"
+            android:ems="10"
             android:inputType="date"
-            android:textAppearance="@style/nomal" />
+            android:text="" />
+
+        <ImageView
+            android:id="@+id/ivDatePicker"
+            android:src="@drawable/ic_baseline_date_range_24"
+            android:backgroundTint="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -45,8 +45,8 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
     private TextView maChamCong, tenSanPham;
     private EditText soThanhPham, soPhePham;
     private AppCompatButton btnThem, btnSua;
-    private SearchView searchMenu;
     private String tenSPOld;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +60,25 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
     private void setEvent() {
 
         database = new ChiTietChamCongDB(ChiTietChamCongActivity.this);
-        customAdapterChiTietChamCong = new CustomAdapterChiTietChamCong(this, R.layout.chi_tiet_cham_cong_item, data);
-        lvDanhSach.setAdapter(customAdapterChiTietChamCong);
-
         Intent intent = getIntent();
         maChamCong.setText(intent.getStringExtra("MaChamCong"));
 
-        loadAll();
+        data.addAll(database.docDuLieu(maChamCong.getText().toString()));
+        customAdapterChiTietChamCong = new CustomAdapterChiTietChamCong(this, R.layout.chi_tiet_cham_cong_item, data);
+        lvDanhSach.setAdapter(customAdapterChiTietChamCong);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                customAdapterChiTietChamCong.filter(newText);
+                return false;
+            }
+        });
 
         customAdapterSpinner = new CustomAdapterSpinner(this, R.layout.spinner_row, khoiTao());
         this.spinner.setAdapter(customAdapterSpinner);
@@ -76,7 +88,6 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
                 SanPham sp = dssp.get(i);
                 tenSanPham.setText(sp.getTenSP());
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -102,12 +113,14 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
         lvDanhSach = findViewById(R.id.lvCTCC);
         btnThem = findViewById(R.id.btnThemCTCC);
         btnSua = findViewById(R.id.btnSuaCTCC);
+        searchView = findViewById(R.id.timkiem_congnhan);
     }
 
     private void loadAll() {
         data.clear();
         data.addAll(database.docDuLieu(maChamCong.getText().toString()));
-        customAdapterChiTietChamCong.notifyDataSetChanged();
+        customAdapterChiTietChamCong = new CustomAdapterChiTietChamCong(this, R.layout.chi_tiet_cham_cong_item, data);
+        lvDanhSach.setAdapter(customAdapterChiTietChamCong);
     }
 
     private void btnThemOnClickEvent(View view) {
@@ -117,8 +130,7 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
             return;
         }
         database.themDuLieu(chiTietChamCong);
-        data.add(chiTietChamCong);
-        customAdapterChiTietChamCong.notifyDataSetChanged();
+        loadAll();
         displayToast("Thêm thành công chi tiết chấm công!");
     }
 
@@ -142,29 +154,22 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
 
     public void xoaCTCC(ChiTietChamCong chiTietChamCong) {
 
-        //Tạo đối tượng
         AlertDialog.Builder b = new AlertDialog.Builder(this);
-        //Thiết lập tiêu đề
         b.setTitle("Xác nhận");
         b.setMessage("Bạn muốn xoá chi tiết chấm công.");
-        // Nút Ok
         b.setPositiveButton("Xoá", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 database.xoaDuLieu(chiTietChamCong);
                 loadAll();
-                displayToast("Xoá thành công chi tiết chấm công!" );
-
+                displayToast("Xoá thành công chi tiết chấm công!");
             }
         });
-        //Nút Cancel
         b.setNegativeButton("Thoát", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }
         });
-        //Tạo dialog
         AlertDialog al = b.create();
-        //Hiển thị
         al.show();
 
     }
@@ -174,7 +179,7 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
         maChamCong.setText(chiTietChamCong.getMaChamCong());
         spinner.setSelection(getPositionSP(chiTietChamCong.getTenSanPham()));
         tenSanPham.setText(chiTietChamCong.getTenSanPham());
-        tenSPOld= chiTietChamCong.getTenSanPham();
+        tenSPOld = chiTietChamCong.getTenSanPham();
         soThanhPham.setText(String.valueOf(chiTietChamCong.getSoLuongThanhPham()));
         soPhePham.setText(String.valueOf(chiTietChamCong.getSoLuongPhePham()));
     }
@@ -191,8 +196,9 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
 
     private void btnSuaOnClickEvent(View view) {
         SanPham sp = (SanPham) customAdapterSpinner.getItem(spinner.getSelectedItemPosition());
-        if(!tenSPOld.equals(sp.getTenSP())){
+        if (!tenSPOld.equals(sp.getTenSP())) {
             displayToast("Mã sản phẩm không thể thay đổi!");
+            spinner.setSelection(getPositionSP(tenSPOld));
             return;
         }
         ChiTietChamCong chiTietChamCong = findChiTietChamCong(sp.getMaSP(), maChamCong.getText().toString());
@@ -217,34 +223,7 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        getMenuInflater().inflate(R.menu.search_menu, menu);
-        searchMenu = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchMenu.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchMenu.setMaxWidth(Integer.MAX_VALUE);
-        searchMenu.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                customAdapterChiTietChamCong.getFilter().filter(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                customAdapterChiTietChamCong.getFilter().filter(newText);
-                return false;
-            }
-        });
-        return true;
-    }
-
-    @Override
     public void onBackPressed() {
-        if (!searchMenu.isIconified()) {
-            searchMenu.setIconified(true);
-            return;
-        }
         super.onBackPressed();
     }
 }

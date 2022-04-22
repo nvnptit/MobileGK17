@@ -35,11 +35,11 @@ public class ChamCongDB extends SQLiteOpenHelper {
         database.execSQL(sql, new Object[]{chamCong.getMaChamCong(), chamCong.getMaCongNhan(), chamCong.getNgayChamCong()});
     }
 
-    public List<ChamCong> docDuLieu() {
+    public List<ChamCong> docDuLieu(String macn) {
         List<ChamCong> data = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
-        String sql = "Select * from CHAMCONG";
-        Cursor cursor = database.rawQuery(sql, null);
+        String sql = "Select * from CHAMCONG where MaCongNhan=?";
+        Cursor cursor = database.rawQuery(sql, new String[]{macn});
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
