@@ -28,8 +28,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
-        password=findViewById(R.id.editTextPassword);
-        repass=findViewById(R.id.editTextRePass);
+        password=findViewById(R.id.editTextPassword1);
+        repass=findViewById(R.id.editTextRepas1);
         button=findViewById(R.id.cirContButton);
         db=new DBLogin(this);
         username=getIntent().getStringExtra("phone_number");
@@ -58,7 +58,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     }
 
     private void gotoMainActivity() {
-        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+        Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
         startActivity(intent);
     }
 }

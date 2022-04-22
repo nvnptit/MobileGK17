@@ -40,6 +40,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         email_phone = findViewById(R.id.editTextEmailPhone);
         mAuth = FirebaseAuth.getInstance();
 
+        System.out.println("NVN   "+mAuth);
         db = new DBLogin(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
