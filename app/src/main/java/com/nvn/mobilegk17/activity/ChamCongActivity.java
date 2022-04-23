@@ -142,9 +142,7 @@ public class ChamCongActivity extends AppCompatActivity {
         data.addAll(database.docDuLieu(tvMaCongNhan.getText().toString()));
         customAdapterChamCong = new CustomAdapterChamCong(this, R.layout.cham_cong_item, data);
         lvDanhSach.setAdapter(customAdapterChamCong);
-
     }
-
 
     private boolean isExist(String maChamCong) {
         boolean check = false;
