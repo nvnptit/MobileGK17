@@ -37,7 +37,6 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHold
     @NonNull
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Nạp view sản phẩm
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.line_qlsanpham, null);
         return new ItemHolder(view);
     }
@@ -51,10 +50,8 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHold
         arrayList.clear();
         text = text.toLowerCase();
         if (text.length() == 0) {
-            System.out.println("TEMPSIZE: "+dataTemp.size());
             arrayList.addAll(dataTemp);
         } else {
-            System.out.println("LISTENER TMP SIZE: " + dataTemp.size());
             for (SanPham sp : dataTemp) {
                 if (sp.getTenSP().toLowerCase().contains(text)) {
                     arrayList.add(sp);
@@ -73,7 +70,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHold
         DecimalFormat df = new DecimalFormat("###,###,###");
         holder.nameProduct.setText(sanPham.getTenSP());
         holder.priceProduct.setText(df.format(Integer.parseInt(sanPham.getDonGia())) + " VNĐ");
-        Picasso.get().load(Uri.fromFile(new File(sanPham.getHinhSP()+"")))
+        Picasso.get().load(Uri.fromFile(new File(sanPham.getHinhSP() + "")))
                 .error(R.drawable.no_image)
                 .into(holder.imageProduct);
     }
