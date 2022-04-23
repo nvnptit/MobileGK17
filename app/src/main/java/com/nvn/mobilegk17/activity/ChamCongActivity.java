@@ -78,7 +78,12 @@ public class ChamCongActivity extends AppCompatActivity {
         data.addAll(database.docDuLieu(tvMaCongNhan.getText().toString()));
         customAdapterChamCong = new CustomAdapterChamCong(this, R.layout.cham_cong_item, data);
         lvDanhSach.setAdapter(customAdapterChamCong);
-
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchView.setIconified(false);
+            }
+        });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

@@ -17,8 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.nvn.mobilegk17.R;
-import com.nvn.mobilegk17.activity.ChartActivity;
-import com.nvn.mobilegk17.activity.ThemMoiActivity;
+import com.nvn.mobilegk17.activity.ThemMoiSPActivity;
 import com.nvn.mobilegk17.adapter.SanPhamAdapter;
 import com.nvn.mobilegk17.database.DbSanPham;
 import com.nvn.mobilegk17.model.SanPham;
@@ -62,6 +61,12 @@ public class QuanLySanPhamFragment extends Fragment {
 
     private void setEvent() {
         initData();
+        timKiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timKiem.setIconified(false);
+            }
+        });
         timKiem.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -78,7 +83,7 @@ public class QuanLySanPhamFragment extends Fragment {
         btnThemMoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ThemMoiActivity.class);
+                Intent intent = new Intent(getContext(), ThemMoiSPActivity.class);
                 startActivity(intent);
             }
         });

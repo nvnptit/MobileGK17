@@ -28,9 +28,9 @@ import com.nvn.mobilegk17.model.SanPham;
 import com.nvn.mobilegk17.util.Utils;
 import com.squareup.picasso.Picasso;
 
-public class ThemMoiActivity extends AppCompatActivity {
+public class ThemMoiSPActivity extends AppCompatActivity {
     private static final int MY_REQUEST_CODE = 18;
-    private static final String MY_TAG = ThemMoiActivity.class.toString();
+    private static final String MY_TAG = ThemMoiSPActivity.class.toString();
     Toolbar toolbar;
     Button btnThem, btnDatLai;
 
@@ -49,7 +49,7 @@ public class ThemMoiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_them_moi);
+        setContentView(R.layout.activity_them_moi_sp);
         setControl();
         tvMaSP.setFocusable(true);
         setEvent();

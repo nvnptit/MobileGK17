@@ -61,7 +61,7 @@
             android:name=".activity.ChiTietSanPhamActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ThemMoiActivity"
+            android:name=".activity.ThemMoiSPActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ChartActivity"

@@ -16,7 +16,7 @@ import com.nvn.mobilegk17.R;
 import com.nvn.mobilegk17.activity.ChartActivity;
 
 public class BieuDoFragment extends Fragment {
-    CardView bdSanPham,bdCongNhan,bdChamCong;
+    CardView bdSanPham,bdCongNhan;
     public BieuDoFragment() {
         // Required empty public constructor
     }
@@ -53,17 +53,10 @@ public class BieuDoFragment extends Fragment {
 
             }
         });
-        bdChamCong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     private void setControl() {
         bdSanPham = getActivity().findViewById(R.id.card1);
         bdCongNhan = getActivity().findViewById(R.id.card2);
-        bdChamCong = getActivity().findViewById(R.id.card3);
     }
 }
