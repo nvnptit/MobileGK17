@@ -29,7 +29,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
         password=findViewById(R.id.editTextPassword);
-        repass=findViewById(R.id.editTextRePass);
+        repass=findViewById(R.id.editTextRepass);
         button=findViewById(R.id.cirContButton);
         db=new DBLogin(this);
         username=getIntent().getStringExtra("phone_number");
@@ -60,5 +60,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private void gotoMainActivity() {
         Intent intent=new Intent(getApplicationContext(),MainActivity.class);
         startActivity(intent);
+    }
+    public void backToLogin(View view){
+        startActivity(new Intent(this,LoginActivity.class));
+        overridePendingTransition(R.anim.slide_in_right,R.anim.stay);
     }
 }

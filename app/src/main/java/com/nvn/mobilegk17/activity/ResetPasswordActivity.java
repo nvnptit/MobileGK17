@@ -36,16 +36,22 @@ public class ResetPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
-        button = findViewById(R.id.cirContButton);
-        email_phone = findViewById(R.id.editTextEmailPhone);
+        button = findViewById(R.id.cirContButtonResetPass);
+        email_phone = findViewById(R.id.editTextEmailPhoneResetPass);
         mAuth = FirebaseAuth.getInstance();
-
         db = new DBLogin(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phone = email_phone.getText().toString();
-                onClickVerify(phone);
+                String phone = "+84"+email_phone.getText().toString().substring(1,email_phone.getText().toString().length());
+                if(db.checkPhone(phone)){
+                    onClickVerify(phone);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Số điện thoại không khớp với bất kỳ tài khoản nào",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

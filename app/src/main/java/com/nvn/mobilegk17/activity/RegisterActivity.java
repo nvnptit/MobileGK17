@@ -46,12 +46,12 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         changeStatusBarColor();
         DB =new DBLogin(this);
-        email=findViewById(R.id.editTextEmail);
-        password=findViewById(R.id.editTextPassword);
-        repassword=findViewById(R.id.editTextRePass);
-        phone=findViewById(R.id.editTextMobile);
-        signup=findViewById(R.id.cirRegisterButton);
-        name=findViewById(R.id.editTextName);
+        email=findViewById(R.id.editTextEmailRegister);
+        password=findViewById(R.id.editTextPasswordRegister);
+        repassword=findViewById(R.id.editTextRePassRegister);
+        phone=findViewById(R.id.editTextMobileRegister);
+        signup=findViewById(R.id.cirRegisterButtonRegister);
+        name=findViewById(R.id.editTextNameRegister);
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
 
         if (SDK_INT>8){

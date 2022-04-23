@@ -33,9 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         }
         DB= new DBLogin(this);
         setContentView(R.layout.activity_login);
-        email=findViewById(R.id.editTextEmail);
-        password=findViewById(R.id.editTextPassword);
-        login=findViewById(R.id.cirLoginButton);
+        email=findViewById(R.id.editTextEmailLogin);
+        password=findViewById(R.id.editTextPasswordLogin);
+        login=findViewById(R.id.cirLoginButtonLogin);
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
 
         if (SDK_INT>8){
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             User u=new User();
                             u=DB.getUser(user);
-                            Toast.makeText(LoginActivity.this,"Đăng nhập thành công, sdt: "+u.getPhone(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
                             Intent intent=new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(intent);
                         }
