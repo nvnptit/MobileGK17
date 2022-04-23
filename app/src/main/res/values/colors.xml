@@ -20,4 +20,6 @@
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#11CFC5</color>
 
+    <color name="material_500">#FFC107</color>
+
 </resources>
