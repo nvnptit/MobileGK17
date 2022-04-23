@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.text.TextUtils;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.nvn.mobilegk17.database.DBLogin;
 import com.nvn.mobilegk17.model.User;
 import com.nvn.mobilegk17.util.EmailService;
 import com.nvn.mobilegk17.util.Global;
+import com.nvn.mobilegk17.util.LoadingDialog;
+import com.nvn.mobilegk17.util.Utils;
 
 import java.util.Random;
 
@@ -33,9 +36,10 @@ public class LoginActivity extends AppCompatActivity {
         }
         DB= new DBLogin(this);
         setContentView(R.layout.activity_login);
-        email=findViewById(R.id.editTextEmail);
-        password=findViewById(R.id.editTextPassword);
-        login=findViewById(R.id.cirLoginButton);
+        email=findViewById(R.id.editTextEmailLogin);
+        password=findViewById(R.id.editTextPasswordLogin);
+        login=findViewById(R.id.cirLoginButtonLogin);
+        final LoadingDialog loadingDialog=new LoadingDialog(LoginActivity.this);
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
 
         if (SDK_INT>8){
@@ -46,19 +50,24 @@ public class LoginActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                String user=email.getText().toString();
-                String pass=password.getText().toString();
+                String user = email.getText().toString().trim();
+                String pass=password.getText().toString().trim();
                 if(TextUtils.isEmpty(user)||TextUtils.isEmpty(pass)){
                     Toast.makeText(LoginActivity.this,"Không được để trống email/ mật khẩu",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
+                    if(!Utils.isEmailValid(user)){
+                        Toast.makeText(LoginActivity.this,"Địa chỉ email không hợp lệ",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     Boolean checkUser=DB.checkUsernamePassword(user,pass);
                     if(!checkUser){
                         Toast.makeText(LoginActivity.this,"Email hoặc mật khẩu không đúng",Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
+
                         if(DB.checkVerify(user)==0){
                             Global.user=DB.getUser(user);
                             Random rand = new Random();
@@ -71,14 +80,21 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else
                         {
+                            loadingDialog.startLoadingDialog();
+                            Handler handler=new Handler();
+                            handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        loadingDialog.dismissDialog();
+                                        User u=new User();
+                                        u=DB.getUser(user);
+                                        Toast.makeText(LoginActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
+                                        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                },3000);
 
-                            User u=new User();
-                            u=DB.getUser(user);
-                            Toast.makeText(LoginActivity.this,"Đăng nhập thành công, sdt: "+u.getPhone(),Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-                            startActivity(intent);
                         }
-
                     }
                 }
 

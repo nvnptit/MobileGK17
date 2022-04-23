@@ -35,14 +35,14 @@ public class VerifyResetPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_reset_password);
-        digit1=findViewById(R.id.digit1);
-        digit2=findViewById(R.id.digit2);
-        digit3=findViewById(R.id.digit3);
-        digit4=findViewById(R.id.digit4);
-        digit5=findViewById(R.id.digit5);
-        digit6=findViewById(R.id.digit6);
+        digit1=findViewById(R.id.digit1Reset);
+        digit2=findViewById(R.id.digit2Reset);
+        digit3=findViewById(R.id.digit3Reset);
+        digit4=findViewById(R.id.digit4Reset);
+        digit5=findViewById(R.id.digit5Reset);
+        digit6=findViewById(R.id.digit6Reset);
         mAuth=FirebaseAuth.getInstance();
-        button=findViewById(R.id.cirVerifyButton);
+        button=findViewById(R.id.cirVerifyButtonReset);
         getDataIntent();
         button.setOnClickListener(new View.OnClickListener() {
             @Override

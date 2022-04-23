@@ -29,7 +29,7 @@
     <string name="dsBieuDo">Danh sách biểu đồ</string>
 
     <string name="login_email_hint">Email</string>
-    <string name="login_password_hint">Password</string>
+    <string name="login_password_hint">Mật khẩu</string>
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>

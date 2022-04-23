@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -22,7 +24,12 @@ import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.nvn.mobilegk17.R;
 import com.nvn.mobilegk17.database.DBLogin;
+import com.nvn.mobilegk17.util.EmailService;
+import com.nvn.mobilegk17.util.Global;
+import com.nvn.mobilegk17.util.LoadingDialog;
+import com.nvn.mobilegk17.util.Utils;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class ResetPasswordActivity extends AppCompatActivity {
@@ -36,17 +43,41 @@ public class ResetPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
-        button = findViewById(R.id.cirContButton);
-        email_phone = findViewById(R.id.editTextEmailPhone);
+        button = findViewById(R.id.cirContButtonResetPass);
+        email_phone = findViewById(R.id.editTextEmailPhoneResetPass);
         mAuth = FirebaseAuth.getInstance();
-
-        System.out.println("NVN   "+mAuth);
         db = new DBLogin(this);
+        final LoadingDialog loadingDialog=new LoadingDialog(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phone = email_phone.getText().toString();
-                onClickVerify(phone);
+                String getPhone=email_phone.getText().toString().trim();
+                if(TextUtils.isEmpty(getPhone)){
+                    Toast.makeText(getApplicationContext(),"Không được để trống số điện thoại",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!Utils.isPhoneValid(getPhone)){
+                    Toast.makeText(getApplicationContext(),"Số điện thoại không hợp lệ",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String phone = "+84"+email_phone.getText().toString().substring(1,email_phone.getText().toString().length());
+                if(db.checkPhone(phone)){
+                    loadingDialog.startLoadingDialog();
+                    Handler handler=new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingDialog.dismissDialog();
+                            onClickVerify(phone);
+                        }
+                    },3000);
+
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Số điện thoại không khớp với bất kỳ tài khoản nào",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

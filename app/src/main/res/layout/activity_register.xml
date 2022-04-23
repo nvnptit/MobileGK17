@@ -30,15 +30,19 @@
                     style="@style/viewParent.headerText.NoMode"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:text="Here's\nyour first\nstep with\nus|"
+                    android:text="Đăng\nký\ntài\ khoản"
                     android:textColor="@color/whiteTextColor" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="600px"
+                    android:layout_height="600px"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_login_hero" />
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="-8dp"
+                    android:src="@drawable/register" />
+                <!--                    android:src="@drawable/ic_login_hero"-->
+
 
             </RelativeLayout>
 
@@ -61,9 +65,9 @@
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
-                            android:id="@+id/editTextName"
+                            android:id="@+id/editTextNameRegister"
                             style="@style/modifiedEditText"
-                            android:hint="Name"
+                            android:hint="Họ tên"
                             android:inputType="textPersonName"
                             android:maxLines="1">
 
@@ -77,9 +81,9 @@
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
-                            android:id="@+id/editTextEmail"
+                            android:id="@+id/editTextEmailRegister"
                             style="@style/modifiedEditText"
-                            android:hint="Email"
+                            android:hint="Địa chỉ email"
                             android:inputType="textEmailAddress"
                             android:maxLines="1">
 
@@ -93,9 +97,9 @@
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
-                            android:id="@+id/editTextMobile"
+                            android:id="@+id/editTextMobileRegister"
                             style="@style/modifiedEditText"
-                            android:hint="Mobile Number"
+                            android:hint="Số điện thoại"
                             android:inputType="phone"
                             android:maxLines="1">
 
@@ -109,7 +113,7 @@
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
-                            android:id="@+id/editTextPassword"
+                            android:id="@+id/editTextPasswordRegister"
                             style="@style/modifiedEditText"
                             android:hint="@string/login_password_hint"
                             android:inputType="textPassword"
@@ -125,7 +129,7 @@
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
-                            android:id="@+id/editTextRePass"
+                            android:id="@+id/editTextRePassRegister"
                             style="@style/modifiedEditText"
                             android:hint="Nhập lại mật khẩu"
                             android:inputType="textPassword"
@@ -136,11 +140,11 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.apachat.loadingbutton.core.customViews.CircularProgressButton
-                        android:id="@+id/cirRegisterButton"
+                        android:id="@+id/cirRegisterButtonRegister"
                         style="@style/loginButton"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/loginViewsMargin"
-                        android:text="Register"
+                        android:text="Đăng ký"
                         app:initialCornerAngle="27dp"
                         app:spinning_bar_color="#FFF"
                         app:spinning_bar_padding="6dp"
@@ -150,7 +154,7 @@
                         style="@style/parent"
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         android:onClick="onLoginClick"
-                        android:text="Already have an account?"
+                        android:text="Bạn đã có tài khoản?"
                         android:textAlignment="center"
                         android:textColor="@color/themeColor"
                         android:textSize="17sp"
@@ -172,14 +176,6 @@
                     android:layout_weight="3"
                     android:background="@color/whiteTextColor" />
 
-                <TextView
-                    style="@style/viewParent.headerText.NoMode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:text="Use other Methos"
-                    android:textAlignment="center"
-                    android:textColor="@color/whiteTextColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -188,17 +184,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="30dp"
                 android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_facebook" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/ic_google_plus" />
 
             </LinearLayout>
 

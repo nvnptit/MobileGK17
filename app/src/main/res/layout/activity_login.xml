@@ -33,14 +33,15 @@
                     style="@style/viewParent.headerText.NoMode"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:text="Already\nhave an\n Account?" />
+                    android:text="Bạn\nđã có\ntài khoản?" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="600px"
+                    android:layout_height="600px"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/ic_register_hero" />
+                    android:src="@drawable/login" />
+<!--                    android:src="@drawable/ic_register_hero" />-->
 
             </RelativeLayout>
 
@@ -50,7 +51,7 @@
                 android:layout_marginTop="@dimen/loginViewsMargin">
 
                 <EditText
-                    android:id="@+id/editTextEmail"
+                    android:id="@+id/editTextEmailLogin"
                     style="@style/modifiedEditText"
                     android:hint="@string/login_email_hint"
                     android:inputType="textEmailAddress"
@@ -65,7 +66,7 @@
                 android:layout_marginTop="@dimen/loginViewsMargin">
 
                 <EditText
-                    android:id="@+id/editTextPassword"
+                    android:id="@+id/editTextPasswordLogin"
                     style="@style/modifiedEditText"
                     android:hint="@string/login_password_hint"
                     android:inputType="textPassword"
@@ -79,16 +80,16 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="10dp"
                 android:onClick="onForgotPassClick"
-                android:text="Forgot Password?"
+                android:text="Quên mật khẩu?"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="@dimen/newsMoreTextSize" />
 
             <com.apachat.loadingbutton.core.customViews.CircularProgressButton
-                android:id="@+id/cirLoginButton"
+                android:id="@+id/cirLoginButtonLogin"
                 style="@style/loginButton"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/loginViewsMargin"
-                android:text="Login"
+                android:text="Đăng nhập"
                 app:initialCornerAngle="27dp"
                 app:spinning_bar_color="#FFF"
                 app:spinning_bar_padding="6dp"
@@ -100,7 +101,7 @@
                 style="@style/parent"
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:onClick="onLoginClick"
-                android:text="New User? Register Now"
+                android:text="Bạn là người dùng mới? Đăng ký nào"
                 android:textAlignment="center"
                 android:textColor="@color/themeColor"
                 android:textSize="17sp"
@@ -113,13 +114,14 @@
                 android:weightSum="12"></LinearLayout>
         </LinearLayout>
     </ScrollView>
+
     <View
         android:layout_width="11dp"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/ic_side_bg"/>
+        android:background="@drawable/ic_side_bg" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
