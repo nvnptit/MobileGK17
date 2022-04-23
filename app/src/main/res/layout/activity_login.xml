@@ -36,11 +36,12 @@
                     android:text="Bạn\nđã có\ntài khoản?" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="600px"
+                    android:layout_height="600px"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/ic_register_hero" />
+                    android:src="@drawable/login" />
+<!--                    android:src="@drawable/ic_register_hero" />-->
 
             </RelativeLayout>
 
@@ -113,13 +114,14 @@
                 android:weightSum="12"></LinearLayout>
         </LinearLayout>
     </ScrollView>
+
     <View
         android:layout_width="11dp"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/ic_side_bg"/>
+        android:background="@drawable/ic_side_bg" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.regex.Pattern;
 
 public class Utils {
     public static Bitmap getImage(byte[] image) {
@@ -50,5 +51,13 @@ public class Utils {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         return stream.toByteArray();
+    }
+    public static boolean isEmailValid(String email) {
+        final Pattern EMAIL_REGEX = Pattern.compile("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", Pattern.CASE_INSENSITIVE);
+        return EMAIL_REGEX.matcher(email).matches();
+    }
+    public static boolean isPhoneValid(String phone) {
+        final Pattern EMAIL_REGEX = Pattern.compile("(84|0[3|5|7|8|9])+([0-9]{8})");
+        return EMAIL_REGEX.matcher(phone).matches();
     }
 }

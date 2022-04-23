@@ -7,6 +7,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,7 +21,9 @@ import com.nvn.mobilegk17.database.DBLogin;
 import com.nvn.mobilegk17.model.User;
 import com.nvn.mobilegk17.util.EmailService;
 import com.nvn.mobilegk17.util.Global;
+import com.nvn.mobilegk17.util.LoadingDialog;
 import com.nvn.mobilegk17.util.Password;
+import com.nvn.mobilegk17.util.Utils;
 
 import java.security.spec.InvalidKeySpecException;
 import java.util.Properties;
@@ -52,12 +55,12 @@ public class RegisterActivity extends AppCompatActivity {
         phone=findViewById(R.id.editTextMobileRegister);
         signup=findViewById(R.id.cirRegisterButtonRegister);
         name=findViewById(R.id.editTextNameRegister);
+        final LoadingDialog loadingDialog=new LoadingDialog(this);
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
 
         if (SDK_INT>8){
 
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
             StrictMode.setThreadPolicy(policy);
 
         }
@@ -66,47 +69,62 @@ public class RegisterActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                String user=email.getText().toString();
-                String pass=password.getText().toString();
-                String repass=repassword.getText().toString();
-                String mobilePhone="+84"+phone.getText().toString().substring(1,phone.getText().toString().length());
-                Toast.makeText(getApplicationContext(),mobilePhone,Toast.LENGTH_SHORT).show();
+                String user=email.getText().toString().trim();
+                String pass=password.getText().toString().trim();
+                String repass=repassword.getText().toString().trim();
+                String mobilePhoneGet=phone.getText().toString().trim();
                 String nameNV=name.getText().toString();
                 String salt= Password.getSalt(30);
+                if(TextUtils.isEmpty(user)||TextUtils.isEmpty(pass)||TextUtils.isEmpty(repass)||TextUtils.isEmpty(pass)|| TextUtils.isEmpty(mobilePhoneGet)|| TextUtils.isEmpty(nameNV))
+                {
+                    Toast.makeText(RegisterActivity.this,"Không được để trống dữ liệu",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String passSecure="";
                 try {
                     passSecure=Password.generateSecurePassword(pass,salt);
                 } catch (InvalidKeySpecException e) {
                     e.printStackTrace();
                 }
+                String mobilePhone="+84"+phone.getText().toString().substring(1,phone.getText().toString().length());
                 User userAdd=new User(user,passSecure,nameNV,null,mobilePhone,salt,0);
                 Global.user=userAdd;
-                if(TextUtils.isEmpty(user)||TextUtils.isEmpty(pass)||TextUtils.isEmpty(repass)||TextUtils.isEmpty(pass))
-                {
-                    Toast.makeText(RegisterActivity.this,"Không được để trống dữ liệu",Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                    if(!Utils.isEmailValid(user)){
+                        Toast.makeText(getApplicationContext(),"Địa chỉ email không hợp lệ",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(!Utils.isPhoneValid(mobilePhoneGet))
+                    {
+                        Toast.makeText(getApplicationContext(),"Số điện thoại không hợp lệ",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     if(pass.equals(repass)){
                         Boolean checkEmail=DB.checkUsername(user);
                         if(!checkEmail){
                             Boolean checkPhone=DB.checkPhone(mobilePhone);
                             if(!checkPhone){
-                                Boolean insert= DB.insertData(userAdd);
-                                if(insert){
-                                    Random rand = new Random();
-                                    Global global=(Global)getApplicationContext();
-                                    global.codeVerify=rand.nextInt(10000)+"";
-                                    EmailService.send(user,"MÃ XÁC THỰC TÀI KHOẢN","Mã xác thực tài khoản của bạn là: "+Global.codeVerify);
-                                    Toast.makeText(RegisterActivity.this,"Một mã xác nhận vừa được gửi qua email của bạn",Toast.LENGTH_LONG).show();
-                                    Intent intent= new Intent(getApplicationContext(),VerifyEmailActivity.class);
-                                    startActivity(intent);
-                                }
-                                else
-                                {
-                                    Toast.makeText(RegisterActivity.this,"Đăng ký thất bại",Toast.LENGTH_SHORT).show();
-                                }
-
+                                loadingDialog.startLoadingDialog();
+                                Handler handler=new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        loadingDialog.dismissDialog();
+                                        Boolean insert= DB.insertData(userAdd);
+                                        if(insert){
+                                            Random rand = new Random();
+                                            Global global=(Global)getApplicationContext();
+                                            global.codeVerify=rand.nextInt(10000)+"";
+                                            EmailService.send(user,"MÃ XÁC THỰC TÀI KHOẢN","Mã xác thực tài khoản của bạn là: "+Global.codeVerify);
+                                            Toast.makeText(RegisterActivity.this,"Một mã xác nhận vừa được gửi qua email của bạn",Toast.LENGTH_LONG).show();
+                                            Intent intent= new Intent(getApplicationContext(),VerifyEmailActivity.class);
+                                            startActivity(intent);
+                                        }
+                                        else
+                                        {
+                                            Toast.makeText(RegisterActivity.this,"Đăng ký thất bại",Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                },3000);
                             }
                             else
                             {
@@ -124,7 +142,6 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this,"Mật khẩu không khớp",Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
         });
     }
     public void changeStatusBarColor(){
@@ -139,6 +156,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
     public void onLoginClick(View view){
         startActivity(new Intent(this,LoginActivity.class));
-        overridePendingTransition(R.anim.slide_in_left, android.R.anim.slide_out_right);
+        overridePendingTransition(R.anim.slide_in_right, android.R.anim.slide_out_right);
     }
 }
