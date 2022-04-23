@@ -27,6 +27,7 @@ public class ChartActivity extends AppCompatActivity {
     PieChart pieChart;
     DbSanPham dbSanPham;
     Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,7 @@ public class ChartActivity extends AppCompatActivity {
         actionToolBar();
         setEvent();
     }
+
     private void actionToolBar() {
         toolbar.setTitle("    Biểu đồ sản phẩm");
         setSupportActionBar(toolbar);
@@ -46,6 +48,7 @@ public class ChartActivity extends AppCompatActivity {
             }
         });
     }
+
     private void setEvent() {
         //Initialize array list
         dbSanPham = new DbSanPham(getApplicationContext());
@@ -53,47 +56,46 @@ public class ChartActivity extends AppCompatActivity {
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         //Use for loop
         ArrayList<SanPham> arrs = dbSanPham.laySanPham();
-        int A=0,B=0,D=0,N=0,Q=0,sum=0;
+        int A = 0, B = 0, D = 0, N = 0, Q = 0, sum = 0;
         ArrayList<Integer> a = new ArrayList();
-        for ( SanPham sp : arrs
-             ) {
-                switch (sp.getMaSP().charAt(0)){
-                    case 'A': {
-                        A++;
-                        break;
-                    }
-                    case 'B': {
-                        B++;
-                        break;
-                    }
-                    case 'D': {
-                        D++;
-                        break;
-                    }
-                    case 'N': {
-                        N++;
-                        break;
-                    }
-                    case 'Q': {
-                        Q++;
-                        break;
-                    }
+        for (SanPham sp : arrs) {
+            switch (sp.getMaSP().charAt(0)) {
+                case 'A': {
+                    A++;
+                    break;
                 }
+                case 'B': {
+                    B++;
+                    break;
+                }
+                case 'D': {
+                    D++;
+                    break;
+                }
+                case 'N': {
+                    N++;
+                    break;
+                }
+                case 'Q': {
+                    Q++;
+                    break;
+                }
+            }
         }
-        sum = A+B+D+N+Q;
+        sum = A + B + D + N + Q;
         barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(1, (A* 100 /sum )));
-        barEntries.add(new BarEntry(2,(B* 100 /sum )));
-        barEntries.add(new BarEntry(3, (D* 100 /sum )));
-        barEntries.add(new BarEntry(4,(N* 100 /sum )));
-        barEntries.add(new BarEntry(5,(Q* 100 /sum )));
+        barEntries.add(new BarEntry(1, (A * 100 / sum)));
+        barEntries.add(new BarEntry(2, (B * 100 / sum)));
+        barEntries.add(new BarEntry(3, (D * 100 / sum)));
+        barEntries.add(new BarEntry(4, (N * 100 / sum)));
+        barEntries.add(new BarEntry(5, (Q * 100 / sum)));
 
         pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(A,"Áo sơ mi"));
-        pieEntries.add(new PieEntry(B, "Bao tay"));
-        pieEntries.add(new PieEntry(D, "Dép"));
-        pieEntries.add(new PieEntry(N,"Nón"));
-        pieEntries.add(new PieEntry(Q,"Quần tây"));
+        pieEntries.add(new PieEntry(A*100/sum, "Áo sơ mi"));
+        pieEntries.add(new PieEntry(B*100/sum, "Bao tay"));
+        pieEntries.add(new PieEntry(D*100/sum, "Dép"));
+        pieEntries.add(new PieEntry(N*100/sum, "Nón"));
+        pieEntries.add(new PieEntry(Q*100/sum, "Quần tây"));
 
         //Initialize bar data set
         BarDataSet barDataSet = new BarDataSet(barEntries, "Sản phẩm");
