@@ -24,6 +24,8 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
+            android:foreground="@drawable/effect"
+            android:clickable="true"
             android:id="@+id/card1"
             app:cardCornerRadius="5dp"
             style="@style/stylebieudo">
@@ -44,6 +46,8 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:foreground="@drawable/effect"
+            android:clickable="true"
             android:id="@+id/card2"
             app:cardCornerRadius="5dp"
             style="@style/stylebieudo">

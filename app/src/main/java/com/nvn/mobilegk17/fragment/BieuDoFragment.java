@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.nvn.mobilegk17.R;
 import com.nvn.mobilegk17.activity.ChartActivity;
+import com.nvn.mobilegk17.activity.ChartCongNhanActivity;
 
 public class BieuDoFragment extends Fragment {
     CardView bdSanPham,bdCongNhan;
@@ -50,7 +51,8 @@ public class BieuDoFragment extends Fragment {
         bdCongNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getContext(), ChartCongNhanActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -221,6 +221,7 @@
         android:orientation="horizontal">
 
         <Button
+
             android:id="@+id/btnCapNhat"
             android:layout_width="140dp"
             android:layout_height="wrap_content"

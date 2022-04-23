@@ -82,7 +82,14 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
                 .error(R.drawable.no_image)
                 .into(hinhAnh);
         edtDate.setText(congNhan.getNgaySinh());
-        autoCompleteText.setText(congNhan.getPhanXuong());
+        for(int i=0;i< adapterPhanXuong.getCount();i++)
+        {
+            if(congNhan.getPhanXuong().equals(adapterPhanXuong.getItem(i)))
+            {
+                autoCompleteText.setText(adapterPhanXuong.getItem(i).toString(), false);
+
+            }
+        }
         btnEditImage.setVisibility(View.INVISIBLE);
         txtHo.setEnabled(false);
         txtTen.setEnabled(false);
@@ -144,11 +151,11 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("vi_tri", viTri);
                                     CongNhanFragment fragobj = new CongNhanFragment();
-                                    finish();
-                                    fragobj.setArguments(bundle);
 
+                                    fragobj.setArguments(bundle);
                                     fragmentTransaction.replace(R.id.frame_CTCN,fragobj);
                                     fragmentTransaction.commit();
+                                    finish();
 
                                 }
                             }).create() ;

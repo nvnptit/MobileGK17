@@ -116,7 +116,7 @@ public class QuanLySanPhamFragment extends Fragment {
 
     private void initData() {
         dbSanPham = new DbSanPham(getContext());
-       // initDataDB();
+//        initDataDB();
         sanPhamArrayList.addAll(dbSanPham.laySanPham());
 
         sanPhamAdapter = new SanPhamAdapter(getContext(),sanPhamArrayList);
