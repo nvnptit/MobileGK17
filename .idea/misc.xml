@@ -4,25 +4,25 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.115625" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable-v24/button_background_blue.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable-v24/ic_back_img.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable-v24/ic_login_hero.xml" value="0.1185" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable-v24/ic_register_hero.xml" value="0.1085" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable-v24/ic_side_bg.xml" value="0.121" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable-v24/round_corners2.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable/bg_blue_corner_top_left_right.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable/bg_dialog_confirm.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable/button_cancel.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable/ic_code.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/drawable/round_attach.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/layout/activity_change_password.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/layout/activity_register.xml" value="0.1875" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/layout/activity_reset_password.xml" value="0.1" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/layout/activity_verify_reset_password.xml" value="0.1875" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/layout/custom_dialog.xml" value="0.2" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/layout/layout_dialog_confirm.xml" value="0.264" />
-        <entry key="..\:/University/HK8 2021-2022/Mobile/Project Giua Ky Merge/MobileGK17/app/src/main/res/menu/menu_bottom_nav.xml" value="0.234375" />
+        <entry key="app/src/main/res/drawable-v24/button_background_blue.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_back_img.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_login_hero.xml" value="0.1185" />
+        <entry key="app/src/main/res/drawable-v24/ic_register_hero.xml" value="0.1085" />
+        <entry key="app/src/main/res/drawable-v24/ic_side_bg.xml" value="0.121" />
+        <entry key="app/src/main/res/drawable-v24/round_corners2.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_blue_corner_top_left_right.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_dialog_confirm.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/button_cancel.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_code.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/round_attach.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.1875" />
+        <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_verify_reset_password.xml" value="0.1875" />
+        <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/layout_dialog_confirm.xml" value="0.264" />
+        <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.234375" />
         <entry key="app/src/main/res/drawable-v24/arrow_drop_down.xml" value="0.163" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.129" />
         <entry key="app/src/main/res/drawable-v24/round_corners2.xml" value="0.163" />
@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/layout/activity_qlsanpham.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_them_cnactivity.xml" value="0.15416666666666667" />
         <entry key="app/src/main/res/layout/activity_them_moi.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/activity_them_moi_sp.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_tim_kiem.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/cham_cong_item.xml" value="0.17760416666666667" />
         <entry key="app/src/main/res/layout/chi_tiet_cham_cong_item.xml" value="0.11822916666666666" />
