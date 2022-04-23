@@ -3,6 +3,8 @@ package com.nvn.mobilegk17.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -136,14 +138,18 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-                                    Bundle bundle=new Bundle();
-                                    bundle.putSerializable("user_update",congNhanUpdate);
-                                    intent.putExtras(bundle);
-                                    intent.putExtra("vi_tri",viTri);
-                                    startActivity(intent);
-                                    dialogInterface.dismiss();
-                                    onBackPressed();
+                                    getIntent().putExtra("user_update", congNhanUpdate);
+                                    FragmentManager fragmentManager=getSupportFragmentManager();
+                                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                                    Bundle bundle = new Bundle();
+                                    bundle.putInt("vi_tri", viTri);
+                                    CongNhanFragment fragobj = new CongNhanFragment();
+                                    finish();
+                                    fragobj.setArguments(bundle);
+
+                                    fragmentTransaction.replace(R.id.frame_CTCN,fragobj);
+                                    fragmentTransaction.commit();
+
                                 }
                             }).create() ;
                     dlg.show();

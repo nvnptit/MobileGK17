@@ -217,7 +217,7 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
             pdfDocument.finishPage(page);
 
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
-                    File.separator + "chao.pdf");
+                    File.separator + "Report.pdf");
             try {
                 pdfDocument.writeTo(new FileOutputStream(file));
             } catch (Exception e) {
