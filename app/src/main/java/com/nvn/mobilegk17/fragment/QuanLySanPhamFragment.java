@@ -113,9 +113,10 @@ public class QuanLySanPhamFragment extends Fragment {
         dbSanPham.themSanPham(new SanPham("Q02","Quần tây nữ",
                 "99999","/storage/emulated/0/Download/quantaynu.png"));
     }
+
     private void initData() {
         dbSanPham = new DbSanPham(getContext());
-     //   initDataDB();
+       // initDataDB();
         sanPhamArrayList.addAll(dbSanPham.laySanPham());
 
         sanPhamAdapter = new SanPhamAdapter(getContext(),sanPhamArrayList);

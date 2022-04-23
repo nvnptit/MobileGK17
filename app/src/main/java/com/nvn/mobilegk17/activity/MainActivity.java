@@ -14,6 +14,7 @@ import com.nvn.mobilegk17.fragment.BieuDoFragment;
 import com.nvn.mobilegk17.fragment.CongNhanFragment;
 import com.nvn.mobilegk17.fragment.QuanLySanPhamFragment;
 import com.nvn.mobilegk17.R;
+import com.nvn.mobilegk17.fragment.SettingFragment;
 
 //#NVN
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     QuanLySanPhamFragment quanLySanPhamFragment;
     CongNhanFragment congNhanFragment;
     BieuDoFragment bieuDoFragment;
+    SettingFragment settingFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         quanLySanPhamFragment = new QuanLySanPhamFragment();
         congNhanFragment = new CongNhanFragment();
         bieuDoFragment = new BieuDoFragment();
+        settingFragment = new SettingFragment();
     }
 
     private void setEvent() {
@@ -49,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 } else if (id == R.id.nav_bieudo) {
                     setFragment(bieuDoFragment);
+                    return true;
+                } else if (id == R.id.nav_setting) {
+                    finish();
+//                    setFragment(settingFragment);
                     return true;
                 }
                 return false;
