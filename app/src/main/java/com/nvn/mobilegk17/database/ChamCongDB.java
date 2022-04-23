@@ -55,6 +55,26 @@ public class ChamCongDB extends SQLiteOpenHelper {
         return data;
     }
 
+    public List<ChamCong> docAllDuLieu() {
+        List<ChamCong> data = new ArrayList<>();
+        SQLiteDatabase database = getReadableDatabase();
+        String sql = "Select * from CHAMCONG";
+        Cursor cursor = database.rawQuery(sql, null);
+
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                ChamCong chamCong = new ChamCong();
+                chamCong.setMaChamCong(cursor.getString(0));
+                chamCong.setMaCongNhan(cursor.getString(1));
+                chamCong.setNgayChamCong(cursor.getString(2));
+                data.add(chamCong);
+                cursor.moveToNext();
+            }
+        }
+
+        return data;
+    }
+
 
     public void suaNgay(ChamCong chamCong) {
         SQLiteDatabase database = getWritableDatabase();

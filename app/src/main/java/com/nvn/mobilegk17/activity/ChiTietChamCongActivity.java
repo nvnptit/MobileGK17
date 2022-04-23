@@ -1,10 +1,19 @@
 package com.nvn.mobilegk17.activity;
 
+import android.Manifest;
 import android.app.SearchManager;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,7 +30,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
+import com.nvn.mobilegk17.BuildConfig;
 import com.nvn.mobilegk17.R;
 import com.nvn.mobilegk17.adapter.CustomAdapterChiTietChamCong;
 import com.nvn.mobilegk17.adapter.CustomAdapterSpinner;
@@ -30,7 +42,14 @@ import com.nvn.mobilegk17.database.DbSanPham;
 import com.nvn.mobilegk17.model.ChiTietChamCong;
 import com.nvn.mobilegk17.model.SanPham;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ChiTietChamCongActivity extends AppCompatActivity {
@@ -44,9 +63,12 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
     private Spinner spinner;
     private TextView maChamCong, tenSanPham;
     private EditText soThanhPham, soPhePham;
-    private AppCompatButton btnThem, btnSua;
+    private AppCompatButton btnThem, btnSua, btnPdf;
     private String tenSPOld;
     private SearchView searchView;
+    private int pageWidth = 1200, pageHeight = 2010;
+    Date dateobj;
+    DateFormat dateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +117,7 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
                 SanPham sp = dssp.get(i);
                 tenSanPham.setText(sp.getTenSP());
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -104,6 +127,120 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
         btnThem.setOnClickListener(this::btnThemOnClickEvent);
         btnSua.setOnClickListener(this::btnSuaOnClickEvent);
         lvDanhSach.setOnItemClickListener(this::lvDanhSachOnItemClickEvent);
+        btnPdf.setOnClickListener(this::btnPdfOnClickEvent);
+    }
+
+    private void btnPdfOnClickEvent(View view) {
+        ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        }, PackageManager.PERMISSION_GRANTED);
+
+
+        dateobj = new Date();
+        if (data.size() <= 0) {
+            Toast.makeText(this, "Không có thông tin để in !", Toast.LENGTH_SHORT).show();
+        } else {
+
+            PdfDocument pdfDocument = new PdfDocument();
+            Paint Titlepaint = new Paint();
+            Paint myPaint = new Paint();
+            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(pageWidth, pageHeight, 1).create();
+            PdfDocument.Page page = pdfDocument.startPage((pageInfo));
+            Canvas canvas = page.getCanvas();
+            Titlepaint.setTextSize(60f);
+            Titlepaint.setColor(Color.BLUE);
+            Titlepaint.setTextAlign(Paint.Align.CENTER);
+            canvas.drawText("Danh sách chi tiết chấm công ", pageWidth / 2, 300, Titlepaint);
+            myPaint.setTextAlign(Paint.Align.LEFT);
+            myPaint.setTextSize(35f);
+            myPaint.setColor(Color.BLACK);
+            canvas.drawText("Tên Công Nhân: " + "Nguyễn Nhật", 20, 500, myPaint);
+            canvas.drawText("Phân xưởng: " + "Hà Nội", 20, 640, myPaint);
+            myPaint.setTextAlign(Paint.Align.RIGHT);
+            canvas.drawText("Mã chấm công: " + "23121", pageWidth - 20, 500, myPaint);
+
+            dateFormat = new SimpleDateFormat("dd/MM/yy");
+            canvas.drawText("Date: " + dateFormat.format(dateobj), pageWidth - 20, 640, myPaint);
+            dateFormat = new SimpleDateFormat("HH:mm:ss");
+            canvas.drawText("Time: " + dateFormat.format(dateobj), pageWidth - 20, 690, myPaint);
+            myPaint.setStyle(Paint.Style.STROKE);
+            myPaint.setStrokeWidth(2);
+            canvas.drawRect(20, 780, pageWidth - 20, 860, myPaint);
+            myPaint.setTextAlign(Paint.Align.LEFT);
+            myPaint.setStyle(Paint.Style.FILL);
+
+            canvas.drawText("Mã SP", 40, 830, myPaint);
+            canvas.drawText("Tên sản phẩm", 200, 830, myPaint);
+            canvas.drawText("Số TP", 700, 830, myPaint);
+            canvas.drawText("Số phế phẩm", 900, 830, myPaint);
+
+
+            canvas.drawLine(180, 790, 180, 840, myPaint);
+            canvas.drawLine(680, 790, 680, 840, myPaint);
+            canvas.drawLine(880, 790, 880, 840, myPaint);
+            int SoTP = 0, SoPP = 0;
+            int yChuan = 950;
+            int yThem = 100;
+            int rowNumber = -2;
+            for (int i = 0; i < data.size(); i++) {
+                SoTP = SoTP + data.get(i).getSoLuongThanhPham();
+                SoPP = SoPP + data.get(i).getSoLuongPhePham();
+                rowNumber++;
+                canvas.drawText(data.get(i).getMaSanPham().toString(), 40, yChuan, myPaint);
+                canvas.drawText(data.get(i).getTenSanPham(), 200, yChuan, myPaint);
+                canvas.drawText(data.get(i).getSoLuongThanhPham() + "", 700, yChuan, myPaint);
+                canvas.drawText(data.get(i).getSoLuongPhePham() + "", 900, yChuan, myPaint);
+                yChuan += yThem;
+
+
+            }
+            int TongSP = SoTP - SoPP;
+            canvas.drawLine(680, 1200 + rowNumber * 100, pageWidth - 20, 1200 + rowNumber * 100, myPaint);
+            canvas.drawText("Tổng Thành Phẩm  :", 700, 1250 + rowNumber * 100, myPaint);
+
+            myPaint.setTextAlign(Paint.Align.RIGHT);
+            canvas.drawText(String.valueOf(SoTP), pageWidth - 40, 1250 + rowNumber * 100, myPaint);
+            myPaint.setTextAlign(Paint.Align.LEFT);
+            canvas.drawText("Tổng Phế Phẩm      :", 700, 1300 + rowNumber * 100, myPaint);
+
+            canvas.drawText(String.valueOf(SoPP), pageWidth - 60, 1300 + rowNumber * 100, myPaint);
+            myPaint.setTextAlign(Paint.Align.RIGHT);
+            myPaint.setTextAlign(Paint.Align.LEFT);
+            myPaint.setColor(Color.rgb(247, 147, 30));
+            canvas.drawRect(680, 1350 + rowNumber * 100, pageWidth - 20, 1450 + rowNumber * 100, myPaint);
+            myPaint.setColor(Color.BLACK);
+            myPaint.setTextSize(50f);
+            myPaint.setTextAlign(Paint.Align.LEFT);
+            canvas.drawText("Sản Phẩm", 700, 1415 + rowNumber * 100, myPaint);
+            myPaint.setTextAlign(Paint.Align.RIGHT);
+            canvas.drawText(String.valueOf(TongSP), pageWidth - 40, 1415 + rowNumber * 100, myPaint);
+            pdfDocument.finishPage(page);
+
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
+                    File.separator + "chao.pdf");
+            try {
+                pdfDocument.writeTo(new FileOutputStream(file));
+            } catch (Exception e) {
+                Log.d("PDFERROR",e.toString());
+            }
+            pdfDocument.close();
+            Intent target = new Intent(Intent.ACTION_VIEW);
+            target.setDataAndType(FileProvider.getUriForFile(ChiTietChamCongActivity.this, BuildConfig.APPLICATION_ID + ".provider", file), "application/pdf");
+            target.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            target.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|
+                    Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+
+            Intent intent = Intent.createChooser(target, "Open File");
+
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                // Instruct the user to install a PDF reader here, or something
+            }
+        }
+
+
     }
 
     public ArrayList khoiTao() {
@@ -121,6 +258,7 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
         btnThem = findViewById(R.id.btnThemCTCC);
         btnSua = findViewById(R.id.btnSuaCTCC);
         searchView = findViewById(R.id.timkiem_congnhan);
+        btnPdf = findViewById(R.id.btnPdf);
     }
 
     private void loadAll() {

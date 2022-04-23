@@ -10,6 +10,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +27,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nvn.mobilegk17.R;
 import com.nvn.mobilegk17.adapter.CongNhanAdapter;
 import com.nvn.mobilegk17.model.CongNhan;
+import com.nvn.mobilegk17.util.Utils;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -141,8 +145,13 @@ public class ThemCNActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
         if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            imageCreate.setImageURI(data.getData());
-            selectedImage = data.getData().toString();
+//            imageCreate.setImageURI(data.getData());
+//            selectedImage = data.getData().toString();
+            Picasso.get().load(data.getData())
+                    .into(imageCreate);
+            String path= Utils.getRealPathFromURI(getApplicationContext(),data.getData())+"";
+            selectedImage=path;
+            System.out.println("selectedImage"+selectedImage);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

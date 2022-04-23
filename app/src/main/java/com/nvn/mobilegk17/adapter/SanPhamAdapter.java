@@ -73,7 +73,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHold
         DecimalFormat df = new DecimalFormat("###,###,###");
         holder.nameProduct.setText(sanPham.getTenSP());
         holder.priceProduct.setText(df.format(Integer.parseInt(sanPham.getDonGia())) + " VNĐ");
-        Picasso.get().load(Uri.fromFile(new File(sanPham.getHinhSP())))
+        Picasso.get().load(Uri.fromFile(new File(sanPham.getHinhSP()+"")))
                 .error(R.drawable.no_image)
                 .into(holder.imageProduct);
     }

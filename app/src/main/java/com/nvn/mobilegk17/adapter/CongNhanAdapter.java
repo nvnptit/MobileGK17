@@ -60,12 +60,12 @@ public class CongNhanAdapter extends  RecyclerView.Adapter<CongNhanAdapter.UserV
             return;
         }
         System.out.println("HINH_Nhat:"+ holder.imgUser);
-        Glide.with(mContext)
-                .load(congNhan.getImageSrc())
-                .into(holder.imgUser);
-//        Picasso.get().load(Uri.fromFile(new File(congNhan.getImageSrc())))
-//                .error(R.drawable.no_image)
+//        Glide.with(mContext)
+//                .load(congNhan.getImageSrc())
 //                .into(holder.imgUser);
+        Picasso.get().load(Uri.fromFile(new File(congNhan.getImageSrc()+"")))
+                .error(R.drawable.no_image)
+                .into(holder.imgUser);
         holder.tvName.setText(congNhan.getHoCN()+" "+congNhan.getTenCN());
         holder.tvPhanXuong.setText(congNhan.getPhanXuong());
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
