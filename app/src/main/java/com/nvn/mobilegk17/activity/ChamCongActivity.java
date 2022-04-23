@@ -49,6 +49,7 @@ public class ChamCongActivity extends AppCompatActivity {
 
     private ListView lvDanhSach;
     private List<ChamCong> data = new ArrayList<>();
+    private List<ChamCong> alldata = new ArrayList<>();
     private CustomAdapterChamCong customAdapterChamCong;
     private ChamCongDB database;
     private ChiTietChamCongDB chiTietChamCongDB;
@@ -147,8 +148,10 @@ public class ChamCongActivity extends AppCompatActivity {
 
     private boolean isExist(String maChamCong) {
         boolean check = false;
-        for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).getMaChamCong().equals(maChamCong)) {
+        alldata.clear();
+        alldata.addAll(database.docAllDuLieu());
+        for (int i = 0; i < alldata.size(); i++) {
+            if (alldata.get(i).getMaChamCong().equals(maChamCong)) {
                 check = true;
             }
         }
