@@ -5,9 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -55,9 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     setFragment(bieuDoFragment);
                     return true;
                 } else if (id == R.id.nav_setting) {
-                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                    startActivity(intent);
-//                    finish();
+                    openConfirmDialog();
 //                    setFragment(settingFragment);
                     return true;
                 }
@@ -71,6 +75,41 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame_container, fragment);
         fragmentTransaction.commit();
+    }
+    private void openConfirmDialog(){
+        com.apachat.loadingbutton.core.customViews.CircularProgressButton btnDongY, btnHuy;
+        final Dialog dialog=new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_dialog_confirm);
+        btnDongY=dialog.findViewById(R.id.btnDongY);
+        btnHuy=dialog.findViewById(R.id.btnHuy);
+        Window window=dialog.getWindow();
+        if(window==null){
+            return;
+        }
+        else
+        {
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            WindowManager.LayoutParams windowAttributes=window.getAttributes();
+            windowAttributes.gravity=Gravity.CENTER;
+            window.setAttributes(windowAttributes);
+            dialog.setCancelable(false);
+            dialog.show();
+            btnDongY.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+            btnHuy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+        }
+
     }
 
     @Override
