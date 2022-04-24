@@ -75,10 +75,6 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHold
                 .into(holder.imageProduct);
     }
 
-    public void release() {
-        context = null;
-    }
-
     public class ItemHolder extends RecyclerView.ViewHolder {
         ImageView imageProduct;
         TextView nameProduct, priceProduct;
