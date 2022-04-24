@@ -99,26 +99,17 @@ public class ChartSanPhamActivity extends AppCompatActivity {
 
         //Initialize bar data set
         BarDataSet barDataSet = new BarDataSet(barEntries, "Sản phẩm");
-        //Set colors
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        //Hide draw value
-        barDataSet.setDrawValues(false);
-        //Set bar data
+        barDataSet.setDrawValues(false); //Hide draw value
         barChart.setData(new BarData(barDataSet));
-        //Set animation
-        barChart.animateY(5000);
-        //Set description text and color
+        barChart.animateY(5000); //Set animation
         barChart.getDescription().setText("");
 
         //Initialize pie data set
         PieDataSet pieDataSet = new PieDataSet(pieEntries, ""); //Biểu đồ sản phẩm
-        //Set colors
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        //Set pie data
         pieChart.setData(new PieData(pieDataSet));
-        //Set animation
         pieChart.animateXY(5000, 5000);
-        //Hide description
         pieChart.getDescription().setEnabled(false);
     }
 
