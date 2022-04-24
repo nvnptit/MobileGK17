@@ -1,9 +1,15 @@
 package com.nvn.mobilegk17.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -61,7 +67,38 @@ public class CustomAdapterChamCong extends ArrayAdapter<ChamCong> implements Fil
         tvNgayChamCong.setText(chamCong.getNgayChamCong());
 
         imXoaChamCong.setOnClickListener(view -> {
-            ((ChamCongActivity) context).xoaChamCong(chamCong);
+            com.apachat.loadingbutton.core.customViews.CircularProgressButton btnDongY, btnHuy;
+            final Dialog dialog = new Dialog(getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.layout_dialog_confirm);
+            btnDongY = dialog.findViewById(R.id.btnDongY);
+            btnHuy = dialog.findViewById(R.id.btnHuy);
+            TextView noidung = dialog.findViewById(R.id.noidung);
+            noidung.setText("Bạn có chắc chắn muốn xoá không?");
+            Window window = dialog.getWindow();
+            if (window == null) {
+                return;
+            } else {
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                WindowManager.LayoutParams windowAttributes = window.getAttributes();
+                windowAttributes.gravity = Gravity.CENTER;
+                window.setAttributes(windowAttributes);
+                dialog.setCancelable(false);
+                dialog.show();
+                btnDongY.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ((ChamCongActivity) context).xoaChamCong(chamCong);
+                    }
+                });
+                btnHuy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+            }
         });
 
         return convertView;
@@ -82,5 +119,4 @@ public class CustomAdapterChamCong extends ArrayAdapter<ChamCong> implements Fil
         }
         notifyDataSetChanged();
     }
-
 }

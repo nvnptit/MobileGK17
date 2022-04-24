@@ -299,25 +299,9 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
     }
 
     public void xoaCTCC(ChiTietChamCong chiTietChamCong) {
-
-        AlertDialog.Builder b = new AlertDialog.Builder(this);
-        b.setTitle("Xác nhận");
-        b.setMessage("Bạn muốn xoá chi tiết chấm công.");
-        b.setPositiveButton("Xoá", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                database.xoaDuLieu(chiTietChamCong);
-                loadAll();
-                displayToast("Xoá thành công chi tiết chấm công!");
-            }
-        });
-        b.setNegativeButton("Thoát", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog al = b.create();
-        al.show();
-
+        database.xoaDuLieu(chiTietChamCong);
+        loadAll();
+        displayToast("Xoá thành công chi tiết chấm công!");
     }
 
     private void lvDanhSachOnItemClickEvent(AdapterView<?> adapterView, View view, int i, long l) {

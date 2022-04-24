@@ -1,17 +1,23 @@
 package com.nvn.mobilegk17.activity;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 
 
@@ -252,25 +258,9 @@ public class ChamCongActivity extends AppCompatActivity {
             displayToast("Chấm công đã có chi tiết chấm công. Không thể xoá");
             return;
         }
-
-        AlertDialog.Builder b = new AlertDialog.Builder(this);
-        b.setTitle("Xác nhận");
-        b.setMessage("Bạn muốn xoá chấm công không?");
-        b.setPositiveButton("Xoá", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                database.xoaDuLieu(chamCong);
-                loadAll();
-                displayToast("Đã xoá chấm công: " + chamCong.getMaChamCong());
-
-            }
-        });
-        b.setNegativeButton("Thoát", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog al = b.create();
-        al.show();
+        database.xoaDuLieu(chamCong);
+        loadAll();
+        displayToast("Đã xoá chấm công: " + chamCong.getMaChamCong());
     }
 
     private void lvDanhSachOnItemClickEvent(AdapterView<?> adapterView, View view, int i, long l) {

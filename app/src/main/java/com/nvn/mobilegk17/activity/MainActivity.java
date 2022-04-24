@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -83,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.layout_dialog_confirm);
         btnDongY=dialog.findViewById(R.id.btnDongY);
         btnHuy=dialog.findViewById(R.id.btnHuy);
+        TextView noidung = dialog.findViewById(R.id.noidung);
+        noidung.setText("Bạn có chắc chắn muốn đăng xuất?");
         Window window=dialog.getWindow();
         if(window==null){
             return;
@@ -99,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
             btnDongY.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    finish();
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
                 }
             });
             btnHuy.setOnClickListener(new View.OnClickListener() {

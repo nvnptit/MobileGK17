@@ -1,10 +1,16 @@
 package com.nvn.mobilegk17.activity;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -65,26 +71,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         btn_Xoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ChiTietSanPhamActivity.this);
-                builder.setTitle("Xác nhận xoá sản phẩm");
-                builder.setMessage("Bạn có chắc xoá sản phẩm này?");
-                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dbSanPham.xoaSanPham(sanPham);
-                        Intent intent = new Intent();
-                        intent.putExtra("sanpham", sanPham);
-                        Toast.makeText(getApplicationContext(), "Xoá thành công!", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                });
-                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        finish();
-                    }
-                });
-                builder.show();
+                openConfirmDialog();
             }
         });
 
@@ -113,4 +100,42 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         });
     }
 
+    private void openConfirmDialog() {
+        com.apachat.loadingbutton.core.customViews.CircularProgressButton btnDongY, btnHuy;
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_dialog_confirm);
+        btnDongY = dialog.findViewById(R.id.btnDongY);
+        btnHuy = dialog.findViewById(R.id.btnHuy);
+        TextView noidung = dialog.findViewById(R.id.noidung);
+        noidung.setText("Bạn có chắc chắn muốn xoá không?");
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        } else {
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            WindowManager.LayoutParams windowAttributes = window.getAttributes();
+            windowAttributes.gravity = Gravity.CENTER;
+            window.setAttributes(windowAttributes);
+            dialog.setCancelable(false);
+            dialog.show();
+            btnDongY.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dbSanPham.xoaSanPham(sanPham);
+                    Intent intent = new Intent();
+                    intent.putExtra("sanpham", sanPham);
+                    Toast.makeText(getApplicationContext(), "Xoá thành công!", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            });
+            btnHuy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+        }
+    }
 }
