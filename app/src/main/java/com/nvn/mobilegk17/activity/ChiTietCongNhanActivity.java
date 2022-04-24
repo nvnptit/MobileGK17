@@ -9,13 +9,19 @@ import androidx.fragment.app.FragmentTransaction;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -135,31 +141,19 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
                     {
                         imgSrc=ImageOld;
                     }
+                    openConfirmDialog();
                     CongNhan congNhanUpdate=new CongNhan(MaCN,Ho,Ten,PhanXuong,NgaySinh,imgSrc);
-                    AlertDialog dlg=new AlertDialog
-                            .Builder(ChiTietCongNhanActivity.this)
-                            .setIcon(R.drawable.baseline_build_black_24dp)
-                            .setTitle("Notification")
-                            .setMessage("\n                  Cập nhật thành công!")
+                    getIntent().putExtra("user_update", congNhanUpdate);
+                    FragmentManager fragmentManager=getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("vi_tri", viTri);
+                    CongNhanFragment fragobj = new CongNhanFragment();
 
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    getIntent().putExtra("user_update", congNhanUpdate);
-                                    FragmentManager fragmentManager=getSupportFragmentManager();
-                                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                                    Bundle bundle = new Bundle();
-                                    bundle.putInt("vi_tri", viTri);
-                                    CongNhanFragment fragobj = new CongNhanFragment();
-
-                                    fragobj.setArguments(bundle);
-                                    fragmentTransaction.replace(R.id.frame_CTCN,fragobj);
-                                    fragmentTransaction.commit();
-                                    finish();
-
-                                }
-                            }).create() ;
-                    dlg.show();
+                    fragobj.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.frame_CTCN,fragobj);
+                    fragmentTransaction.commit();
+                    finish();
                 }
             }
         });
@@ -199,6 +193,34 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
 
     }
 
+    private void openConfirmDialog() {
+        com.apachat.loadingbutton.core.customViews.CircularProgressButton btnXacNhan;
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.confirm_update);
+        btnXacNhan = dialog.findViewById(R.id.btnxacnhan);
+        TextView noidung = dialog.findViewById(R.id.tvcapnhat);
+        noidung.setText("Thêm mới thành công!");
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        } else {
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            WindowManager.LayoutParams windowAttributes = window.getAttributes();
+            windowAttributes.gravity = Gravity.CENTER;
+            window.setAttributes(windowAttributes);
+            dialog.setCancelable(false);
+            dialog.show();
+            btnXacNhan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                    onBackPressed();
+                }
+            });
+        }
+    }
 
     private void pickImageFromGallery() {
         Intent intent=new Intent(Intent.ACTION_PICK);

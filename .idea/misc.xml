@@ -50,6 +50,7 @@
         <entry key="app/src/main/res/layout/activity_verify_reset_password.xml" value="0.1875" />
         <entry key="app/src/main/res/layout/cham_cong_item.xml" value="0.17760416666666667" />
         <entry key="app/src/main/res/layout/chi_tiet_cham_cong_item.xml" value="0.11822916666666666" />
+        <entry key="app/src/main/res/layout/confirm_update.xml" value="0.19071428571428573" />
         <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.2" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/fragment_bieu_do.xml" value="0.11822916666666666" />

@@ -7,13 +7,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -183,17 +189,38 @@ public class ThemCNActivity extends AppCompatActivity {
     }
 
     private void alert(String mess) {
-        AlertDialog dlg = new AlertDialog.Builder(ThemCNActivity.this).setTitle("Notification").setMessage(mess)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        onBackPressed();
-                    }
-                }).create();
-        dlg.show();
+        openConfirmDialog();
 
     }
+    private void openConfirmDialog() {
+        com.apachat.loadingbutton.core.customViews.CircularProgressButton btnXacNhan;
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.confirm_update);
+        btnXacNhan = dialog.findViewById(R.id.btnxacnhan);
+        TextView noidung = dialog.findViewById(R.id.tvcapnhat);
+        noidung.setText("Thêm mới thành công!");
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        } else {
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            WindowManager.LayoutParams windowAttributes = window.getAttributes();
+            windowAttributes.gravity = Gravity.CENTER;
+            window.setAttributes(windowAttributes);
+            dialog.setCancelable(false);
+            dialog.show();
+            btnXacNhan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                    onBackPressed();
+                }
+            });
+        }
+    }
+
 
     private void setControl() {
         btnLuu = findViewById(R.id.btnLuu);

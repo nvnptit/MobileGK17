@@ -127,6 +127,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
                     Intent intent = new Intent();
                     intent.putExtra("sanpham", sanPham);
                     Toast.makeText(getApplicationContext(), "Xoá thành công!", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
                     finish();
                 }
             });

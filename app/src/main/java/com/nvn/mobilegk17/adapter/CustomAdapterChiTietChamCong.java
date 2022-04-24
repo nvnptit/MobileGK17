@@ -90,6 +90,7 @@ public class CustomAdapterChiTietChamCong extends ArrayAdapter<ChiTietChamCong> 
                     @Override
                     public void onClick(View view) {
                         ((ChiTietChamCongActivity) context).xoaCTCC(chiTietChamCong);
+                        dialog.dismiss();
                     }
                 });
                 btnHuy.setOnClickListener(new View.OnClickListener() {

@@ -90,6 +90,7 @@ public class CustomAdapterChamCong extends ArrayAdapter<ChamCong> implements Fil
                     @Override
                     public void onClick(View view) {
                         ((ChamCongActivity) context).xoaChamCong(chamCong);
+                        dialog.dismiss();
                     }
                 });
                 btnHuy.setOnClickListener(new View.OnClickListener() {
