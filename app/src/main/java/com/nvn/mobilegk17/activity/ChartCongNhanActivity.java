@@ -76,7 +76,6 @@ public class ChartCongNhanActivity extends AppCompatActivity {
                     DN++;
                     break;
                 }
-
             }
         }
         sum = HN+HCM+DN;
