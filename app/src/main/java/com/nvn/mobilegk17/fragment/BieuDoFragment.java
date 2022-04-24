@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nvn.mobilegk17.R;
-import com.nvn.mobilegk17.activity.ChartActivity;
+import com.nvn.mobilegk17.activity.ChartSanPhamActivity;
 import com.nvn.mobilegk17.activity.ChartCongNhanActivity;
 
 public class BieuDoFragment extends Fragment {
@@ -44,7 +44,7 @@ public class BieuDoFragment extends Fragment {
         bdSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ChartActivity.class);
+                Intent intent = new Intent(getContext(), ChartSanPhamActivity.class);
                 startActivity(intent);
             }
         });

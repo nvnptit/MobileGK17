@@ -131,13 +131,13 @@ public class CongNhanFragment extends Fragment {
     //Set chiều dài thanh search
     private void initDataCN() {
 
-        dbCongNhan.themCN(new CongNhan("CN1", "Nguyen", "Thu", "Ha Noi", "28/02/2000", "https://kenh14cdn.com/thumb_w/660/203336854389633024/2021/8/15/photo-1-1629034096768473359967.jpg"));
-        dbCongNhan.themCN(new CongNhan("CN2", "Trần", "Hoa", "Ha Noi", "28/02/2000", "https://htran844.github.io/hihi/img/ig/i7.jpg"));
-        dbCongNhan.themCN(new CongNhan("CN3", "Lê", "Tien", "HCM", "28/02/2000", "https://htran844.github.io/hihi/img/ig/i13.jpg"));
-        dbCongNhan.themCN(new CongNhan("CN4", "Hồng", "Vân", "HCM", "28/02/2000", "https://htran844.github.io/hihi/img/ig/i15.jpg"));
-        dbCongNhan.themCN(new CongNhan("CN5", "Nguyen", "Long", "HCM", "28/02/2000", "https://htran844.github.io/hihi/img/ig/i17.jpg"));
-        dbCongNhan.themCN(new CongNhan("CN6", "Nguyen", "Minh", "HCM", "28/02/2000", "https://htran844.github.io/hihi/img/ig/i27.jpg"));
-        dbCongNhan.themCN(new CongNhan("CN7", "Nguyen", "Vũ", "HCM", "28/02/2000", "https://htran844.github.io/hihi/img/ig/i30.jpg"));
+        dbCongNhan.themCN(new CongNhan("CN1", "Nguyen", "Thu", "Ha Noi", "28/02/2000", "/storage/emulated/0/Download/1.jpeg"));
+        dbCongNhan.themCN(new CongNhan("CN2", "Trần", "Hoa", "Ha Noi", "28/02/2000", "/storage/emulated/0/Download/2.jpeg"));
+        dbCongNhan.themCN(new CongNhan("CN3", "Lê", "Tien", "HCM", "28/02/2000", "/storage/emulated/0/Download/3.jpeg"));
+        dbCongNhan.themCN(new CongNhan("CN4", "Hồng", "Vân", "HCM", "28/02/2000", "/storage/emulated/0/Download/4.jpeg"));
+        dbCongNhan.themCN(new CongNhan("CN5", "Nguyen", "Long", "HCM", "28/02/2000", "/storage/emulated/0/Download/5.jpeg"));
+        dbCongNhan.themCN(new CongNhan("CN6", "Nguyen", "Minh", "HCM", "28/02/2000", "/storage/emulated/0/Download/6.jpeg"));
+        dbCongNhan.themCN(new CongNhan("CN7", "Nguyen", "Vũ", "HCM", "28/02/2000", "/storage/emulated/0/Download/7.jpeg"));
 
     }
     @Override
@@ -156,7 +156,7 @@ public class CongNhanFragment extends Fragment {
 
 
         dbCongNhan = new DbCongNhan(getContext());
-//        initDataCN();
+        //initDataCN();
         mListCongNhan.addAll(dbCongNhan.layCongNhan());
         congNhanAdapter = new CongNhanAdapter(getContext(), mListCongNhan);
         rcvUsers.setAdapter(congNhanAdapter);

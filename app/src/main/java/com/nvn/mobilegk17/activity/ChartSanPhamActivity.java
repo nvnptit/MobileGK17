@@ -22,7 +22,7 @@ import com.nvn.mobilegk17.model.SanPham;
 
 import java.util.ArrayList;
 
-public class ChartActivity extends AppCompatActivity {
+public class ChartSanPhamActivity extends AppCompatActivity {
     BarChart barChart;
     PieChart pieChart;
     DbSanPham dbSanPham;

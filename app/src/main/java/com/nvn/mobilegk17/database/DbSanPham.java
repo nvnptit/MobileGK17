@@ -28,23 +28,16 @@ public class DbSanPham extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL ("DROP TABLE IF EXISTS "+ _TABLE);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + _TABLE);
         onCreate(sqLiteDatabase);
     }
 
-    public void themSanPham(SanPham sanPham){
-        String sql = "INSERT INTO tbSanPham VALUES(?,?,?,?)";
-        SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql,new String []{sanPham.getMaSP(),sanPham.getTenSP(), sanPham.getDonGia(), sanPham.getHinhSP()});
-        database.close();
-    }
-
-    public ArrayList<SanPham> laySanPham(){
+    public ArrayList<SanPham> laySanPham() {
         ArrayList<SanPham> sanPhamArrayList = new ArrayList<>();
         String sql = "SELECT * FROM tbSanPham";
         SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.rawQuery(sql,null);
-        if (cursor.moveToFirst()){
+        Cursor cursor = database.rawQuery(sql, null);
+        if (cursor.moveToFirst()) {
             do {
                 SanPham sanPham = new SanPham();
                 sanPham.setMaSP(cursor.getString(0));
@@ -58,17 +51,22 @@ public class DbSanPham extends SQLiteOpenHelper {
         return sanPhamArrayList;
     }
 
-    public void suaSanPham(SanPham sanPham)
-    {
-        String sql="UPDATE tbSanPham SET TENSP=?, DONGIA=?, HINHSP=? where MASP=?";
+    public void themSanPham(SanPham sanPham) {
+        String sql = "INSERT INTO tbSanPham VALUES(?,?,?,?)";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{sanPham.getTenSP(), sanPham.getDonGia(),sanPham.getHinhSP(),sanPham.getMaSP()});
+        database.execSQL(sql, new String[]{sanPham.getMaSP(), sanPham.getTenSP(), sanPham.getDonGia(), sanPham.getHinhSP()});
         database.close();
     }
 
-    public void xoaSanPham(SanPham sanPham)
-    {
-        String sql="DELETE FROM tbSanPham  WHERE MASP=?";
+    public void suaSanPham(SanPham sanPham) {
+        String sql = "UPDATE tbSanPham SET TENSP=?, DONGIA=?, HINHSP=? where MASP=?";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{sanPham.getTenSP(), sanPham.getDonGia(), sanPham.getHinhSP(), sanPham.getMaSP()});
+        database.close();
+    }
+
+    public void xoaSanPham(SanPham sanPham) {
+        String sql = "DELETE FROM tbSanPham  WHERE MASP=?";
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql, new String[]{sanPham.getMaSP()});
         database.close();
