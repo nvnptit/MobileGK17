@@ -61,7 +61,7 @@ public class ChamCongActivity extends AppCompatActivity {
     private ImageView ivDatePicker;
     private EditText editNgayChamCong;
     private SearchView searchView;
-
+    private String hoten,phanXuong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +127,8 @@ public class ChamCongActivity extends AppCompatActivity {
     }
 
     private void setControl() {
+        hoten=getIntent().getStringExtra("hoTen");
+        phanXuong=getIntent().getStringExtra("phanxuong");
         lvDanhSach = findViewById(R.id.lvDanhSachChamCong);
         edtMaChamCong = findViewById(R.id.edtMaChamcong);
         ivDatePicker = findViewById(R.id.ivDatePicker);
@@ -273,7 +275,6 @@ public class ChamCongActivity extends AppCompatActivity {
 
     private void lvDanhSachOnItemClickEvent(AdapterView<?> adapterView, View view, int i, long l) {
         ChamCong chamCong = data.get(i);
-
         tvMaCongNhan.setText(chamCong.getMaCongNhan());
         edtMaChamCong.setText(chamCong.getMaChamCong());
         maChamCongOld = chamCong.getMaChamCong();
@@ -284,6 +285,8 @@ public class ChamCongActivity extends AppCompatActivity {
         ChamCong chamCong = data.get(i);
         Intent intent = new Intent(getApplicationContext(), ChiTietChamCongActivity.class);
         intent.putExtra("MaChamCong", chamCong.getMaChamCong());  // Truyền một String
+        intent.putExtra("hotenNV", hoten);
+        intent.putExtra("phanxuongNV", phanXuong);
         startActivity(intent);
         return true;
     }

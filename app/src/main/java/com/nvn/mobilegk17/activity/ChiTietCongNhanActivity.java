@@ -191,6 +191,8 @@ public class ChiTietCongNhanActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ChamCongActivity.class);
                 intent.putExtra("macn",tvMaCN.getText().toString());
+                intent.putExtra("hoTen",txtHo.getText().toString()+ " "+txtTen.getText().toString());
+                intent.putExtra("phanxuong",autoCompleteText.getText().toString());
                 startActivity(intent);
             }
         });

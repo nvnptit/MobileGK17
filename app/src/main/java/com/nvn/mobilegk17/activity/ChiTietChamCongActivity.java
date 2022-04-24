@@ -69,7 +69,7 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
     private int pageWidth = 1200, pageHeight = 2010;
     Date dateobj;
     DateFormat dateFormat;
-
+    private String hotenNV,phanxuongNV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,10 +154,10 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
             myPaint.setTextAlign(Paint.Align.LEFT);
             myPaint.setTextSize(35f);
             myPaint.setColor(Color.BLACK);
-            canvas.drawText("Tên Công Nhân: " + "Nguyễn Nhật", 20, 500, myPaint);
-            canvas.drawText("Phân xưởng: " + "Hà Nội", 20, 640, myPaint);
+            canvas.drawText("Tên Công Nhân: "+hotenNV,20,500,myPaint);
+            canvas.drawText("Phân xưởng: "+phanxuongNV.toString(),20,640,myPaint);
             myPaint.setTextAlign(Paint.Align.RIGHT);
-            canvas.drawText("Mã chấm công: " + "23121", pageWidth - 20, 500, myPaint);
+            canvas.drawText("Mã chấm công: "+maChamCong.getText().toString(),pageWidth-20,500,myPaint);
 
             dateFormat = new SimpleDateFormat("dd/MM/yy");
             canvas.drawText("Date: " + dateFormat.format(dateobj), pageWidth - 20, 640, myPaint);
@@ -249,6 +249,8 @@ public class ChiTietChamCongActivity extends AppCompatActivity {
     }
 
     private void setControl() {
+        phanxuongNV=getIntent().getStringExtra("phanxuongNV").toString();
+        hotenNV=getIntent().getStringExtra("hotenNV").toString();
         spinner = findViewById(R.id.spnSP);
         maChamCong = findViewById(R.id.tvMCC);
         tenSanPham = findViewById(R.id.tvTenSanPham);
