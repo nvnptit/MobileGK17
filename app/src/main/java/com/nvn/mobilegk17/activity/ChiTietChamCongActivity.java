@@ -32,7 +32,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
-
 import com.nvn.mobilegk17.BuildConfig;
 import com.nvn.mobilegk17.R;
 import com.nvn.mobilegk17.adapter.CustomAdapterChiTietChamCong;
