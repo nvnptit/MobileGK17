@@ -3,7 +3,7 @@
 ### Thực Hiện:
 - **Nguyễn Văn Nhất** 
 - **Project Role:** Core Developer
-- **Contributors:**: Tân, Nhật, Dịu
+- **Contributors:** Tân, Nhật, Dịu
 
 ### Nội Dung
 #### I. Yêu cầu
