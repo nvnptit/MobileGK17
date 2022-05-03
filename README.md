@@ -2,8 +2,8 @@
 
 ### Thực Hiện:
 - **Nguyễn Văn Nhất** 
-- **Project Role:** Core Developer
-- **Contributors:** Tân, Nhật, Dịu
+- **Vai trò:** Trưởng nhóm
+- **Người đóng góp:** Tân, Nhật, Dịu
 
 ### Nội Dung
 #### I. Yêu cầu
